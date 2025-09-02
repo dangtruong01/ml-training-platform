@@ -64,3 +64,43 @@ GroundingDINO/
 annotated_dataset/
 yolo_dataset/
 ml/datasets/
+
+
+# Large model files
+ml/models/yolov8l.pt
+ml/models/yolov8x.pt
+ml/models/sam2/sam2_hiera_small.pt
+ml/models/sam2/sam2_hiera_tiny.pt
+ml/models/sam2/sam2_hiera_large.pt
+ml/models/anomaly/HM/checkpoints/*.ckpt
+
+# Model directories
+ml/models/
+*.pt
+*.ckpt
+*.pth
+*.bin
+
+# Other common large files
+*.zip
+*.tar.gz
+*.7z
+
+# Cache and temp files
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+.pytest_cache/
+
+# Environment files
+.env
+.venv/
+venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
