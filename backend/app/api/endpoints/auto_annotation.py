@@ -6,9 +6,11 @@ import json
 import cv2
 import numpy as np
 import base64
+import uuid
 
 from backend.services.auto_annotation_service import auto_annotation_service
 from backend.services.storage import storage_service
+from backend.services.database_service import database_service
 
 router = APIRouter()
 
@@ -76,7 +78,61 @@ async def create_auto_annotation_project(
     - segmentation: SAM2 for precise defect masks
     """
     try:
-        result = auto_annotation_service.create_project(project_name, project_type, description)
+        # Generate unique project ID
+        project_id = f"{project_name.replace(' ', '_')}_{uuid.uuid4().hex[:8]}"
+        
+        # Create project in database
+        db_result = database_service.create_project(
+            project_id=project_id,
+            project_name=project_name, 
+            owner="system",  # Could be extracted from authentication later
+            project_type=project_type
+        )
+        
+        if db_result['status'] != 'success':
+            return JSONResponse(db_result)
+        
+        # Return format matching the old API
+        from datetime import datetime
+        metadata = {
+            'project_id': project_id,
+            'project_name': project_name,
+            'project_type': project_type,
+            'description': description,
+            'created_at': datetime.now().isoformat(),
+            'status': 'created',
+            'training_status': 'not_started',
+            'model_path': None,
+            'classes': [],
+            'training_images_count': 0,
+            'model_metrics': {}
+        }
+        
+        # Project structure for cloud storage paths
+        if project_type == 'anomaly_detection':
+            structure = {
+                'training_images': f"auto_annotation/projects/{project_id}/training_images",
+                'roi_cache': f"auto_annotation/projects/{project_id}/roi_cache",
+                'defective_images': f"auto_annotation/projects/{project_id}/defective_images",
+                'defective_roi_cache': f"auto_annotation/projects/{project_id}/defective_roi_cache",
+                'anomaly_features': f"auto_annotation/projects/{project_id}/anomaly_features",
+                'defect_detection_results': f"auto_annotation/projects/{project_id}/defect_detection_results"
+            }
+        else:
+            structure = {
+                'training_images': f"auto_annotation/projects/{project_id}/training_images",
+                'annotations': f"auto_annotation/projects/{project_id}/annotations",
+                'models': f"auto_annotation/projects/{project_id}/models",
+                'inference_results': f"auto_annotation/projects/{project_id}/inference_results"
+            }
+        
+        result = {
+            'status': 'success',
+            'project_id': project_id,
+            'metadata': metadata,
+            'structure': structure
+        }
+        
         return JSONResponse(result)
         
     except Exception as e:
@@ -84,22 +140,22 @@ async def create_auto_annotation_project(
 
 @router.get("/projects")
 async def get_auto_annotation_projects():
-    """Get list of all auto-annotation projects"""
+    """Get list of all auto-annotation projects from database"""
     try:
-        projects = auto_annotation_service.get_projects()
-        return JSONResponse({
-            "status": "success",
-            "projects": projects
-        })
+        result = database_service.list_projects()
+        if result['status'] == 'success':
+            return JSONResponse(result['projects'])
+        else:
+            raise HTTPException(status_code=500, detail=result.get('message', 'Unknown error'))
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/projects/{project_id}")
 async def get_project_details(project_id: str):
-    """Get detailed information about a specific project"""
+    """Get detailed information about a specific project from database"""
     try:
-        result = auto_annotation_service.get_project_details(project_id)
+        result = database_service.get_project(project_id)
         return JSONResponse(result)
         
     except Exception as e:
@@ -109,7 +165,7 @@ async def get_project_details(project_id: str):
 async def delete_project(project_id: str):
     """Delete a project and all its associated data"""
     try:
-        result = auto_annotation_service.delete_project(project_id)
+        result = database_service.delete_project(project_id)
         
         if result['status'] == 'success':
             return JSONResponse(result)
@@ -142,27 +198,86 @@ async def upload_training_data(
     - Annotations: COCO format JSON file
     """
     try:
-        # Read training images
-        images_data = []
-        image_names = []
+        # Check if project exists in database
+        project_result = database_service.get_project(project_id)
+        if project_result['status'] != 'success':
+            return JSONResponse({'status': 'error', 'message': 'Project not found'})
         
+        uploaded_files = []
+        
+        # Upload training images
         for image_file in training_images:
-            image_data = await image_file.read()
-            images_data.append(image_data)
-            image_names.append(image_file.filename)
+            content = await image_file.read()
+            
+            # Upload to storage
+            storage_path = f"auto_annotation/projects/{project_id}/training_images/{image_file.filename}"
+            storage_result = await storage_service.upload_file(
+                content=content,
+                filename=image_file.filename,
+                storage_path=storage_path,
+                content_type="image/jpeg"
+            )
+            
+            if storage_result['status'] == 'success':
+                # Track file in database
+                db_result = database_service.add_uploaded_file(
+                    project_id=project_id,
+                    file_type='training_images',
+                    filename=image_file.filename,
+                    original_filename=image_file.filename,
+                    storage_url=storage_result['storage_url'],
+                    storage_path=storage_path,
+                    file_size_bytes=len(content),
+                    content_type="image/jpeg"
+                )
+                
+                uploaded_files.append({
+                    'filename': image_file.filename,
+                    'type': 'training_image',
+                    'storage_url': storage_result['storage_url'],
+                    'tracked': db_result['status'] == 'success'
+                })
         
-        # Read annotation files if provided
-        annotations_data = []
-        annotation_names = []
+        # Upload annotation files if provided
         if annotation_files:
             for annotation_file in annotation_files:
-                annotation_data = await annotation_file.read()
-                annotations_data.append(annotation_data)
-                annotation_names.append(annotation_file.filename)
+                content = await annotation_file.read()
+                
+                # Upload to storage
+                storage_path = f"auto_annotation/projects/{project_id}/annotation_files/{annotation_file.filename}"
+                storage_result = await storage_service.upload_file(
+                    content=content,
+                    filename=annotation_file.filename,
+                    storage_path=storage_path,
+                    content_type="application/json" if annotation_file.filename.endswith('.json') else "text/plain"
+                )
+                
+                if storage_result['status'] == 'success':
+                    # Track file in database  
+                    db_result = database_service.add_uploaded_file(
+                        project_id=project_id,
+                        file_type='annotation_files',
+                        filename=annotation_file.filename,
+                        original_filename=annotation_file.filename,
+                        storage_url=storage_result['storage_url'],
+                        storage_path=storage_path,
+                        file_size_bytes=len(content),
+                        content_type="application/json" if annotation_file.filename.endswith('.json') else "text/plain"
+                    )
+                    
+                    uploaded_files.append({
+                        'filename': annotation_file.filename,
+                        'type': 'annotation_file',
+                        'storage_url': storage_result['storage_url'],
+                        'tracked': db_result['status'] == 'success'
+                    })
         
-        result = auto_annotation_service.upload_training_data(
-            project_id, images_data, image_names, annotations_data, annotation_names, annotation_format
-        )
+        result = {
+            'status': 'success',
+            'message': f'Successfully uploaded {len(uploaded_files)} files',
+            'uploaded_files': uploaded_files,
+            'annotation_format': annotation_format
+        }
         
         return JSONResponse(result)
         
@@ -230,15 +345,14 @@ async def upload_defective_images(
     These images will be processed alongside training images in the ROI extraction step
     """
     try:
-        # Get project details
-        project_details = auto_annotation_service.get_project_details(project_id)
+        # Get project details from database
+        project_details = database_service.get_project(project_id)
         if project_details['status'] != 'success':
             raise HTTPException(status_code=404, detail="Project not found")
         
-        # Create defective images directory
-        project_dir = os.path.join("ml/auto_annotation/projects", project_id)
-        defective_images_dir = os.path.join(project_dir, "defective_images")
-        os.makedirs(defective_images_dir, exist_ok=True)
+        # Get project directories and ensure they exist
+        dirs = await get_project_directories(project_id)
+        await storage_service.create_directory(dirs['defective_images'])
         
         uploaded_count = 0
         failed_uploads = []
@@ -250,14 +364,25 @@ async def upload_defective_images(
                     failed_uploads.append(f"{image_file.filename}: Invalid file type")
                     continue
                 
-                # Save file
-                image_path = os.path.join(defective_images_dir, image_file.filename)
-                with open(image_path, "wb") as f:
-                    content = await image_file.read()
-                    f.write(content)
+                # Save file using storage service
+                content = await image_file.read()
+                storage_path = f"{dirs['defective_images']}/{image_file.filename}"
+                storage_url = await storage_service.upload_file(content, storage_path, "image/jpeg")
+                
+                # Track file in database
+                database_service.add_uploaded_file(
+                    project_id=project_id,
+                    file_type='defective_images',
+                    filename=image_file.filename,
+                    original_filename=image_file.filename,
+                    storage_url=storage_url,
+                    storage_path=storage_path,
+                    file_size_bytes=len(content),
+                    content_type="image/jpeg"
+                )
                 
                 uploaded_count += 1
-                print(f"✅ Uploaded defective image: {image_file.filename}")
+                print(f"✅ Uploaded and tracked defective image: {image_file.filename}")
                 
             except Exception as e:
                 failed_uploads.append(f"{image_file.filename}: {str(e)}")
@@ -303,8 +428,8 @@ async def extract_roi_for_anomaly_detection(
     try:
         print(f"🎯 Starting ROI extraction using {roi_method} method")
         
-        # Get project details
-        project_details = auto_annotation_service.get_project_details(project_id)
+        # Get project details from database
+        project_details = database_service.get_project(project_id)
         if project_details['status'] != 'success':
             raise HTTPException(status_code=404, detail="Project not found")
         
@@ -735,20 +860,18 @@ async def upload_defective_images_to_project(
     with large batches of defective images.
     """
     try:
-        # Create defective images directory
-        project_dir = os.path.join("ml/auto_annotation/projects", project_id)
-        defective_images_dir = os.path.join(project_dir, "defective_images")
-        
-        # Check if project exists
-        if not os.path.exists(project_dir):
-            raise HTTPException(status_code=404, detail="Project not found")
-        
-        os.makedirs(defective_images_dir, exist_ok=True)
+        # Ensure project exists and get directories
+        await ensure_project_exists(project_id)
+        dirs = await get_project_directories(project_id)
+        await storage_service.create_directory(dirs['defective_images'])
         
         # Clear existing defective images
-        for existing_file in os.listdir(defective_images_dir):
-            if existing_file.lower().endswith(('.png', '.jpg', '.jpeg')):
-                os.remove(os.path.join(defective_images_dir, existing_file))
+        existing_files = await storage_service.list_files(dirs['defective_images'], '.jpg')
+        existing_files.extend(await storage_service.list_files(dirs['defective_images'], '.jpeg'))
+        existing_files.extend(await storage_service.list_files(dirs['defective_images'], '.png'))
+        
+        for existing_file in existing_files:
+            await storage_service.delete_file(existing_file)
         
         # Save uploaded defective images
         uploaded_files = []
@@ -757,16 +880,27 @@ async def upload_defective_images_to_project(
         for uploaded_file in defective_images:
             try:
                 if uploaded_file.filename and uploaded_file.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
-                    file_path = os.path.join(defective_images_dir, uploaded_file.filename)
+                    content = await uploaded_file.read()
+                    storage_path = f"{dirs['defective_images']}/{uploaded_file.filename}"
+                    storage_url = await storage_service.upload_file(content, storage_path, "image/jpeg")
                     
-                    with open(file_path, "wb") as f:
-                        content = await uploaded_file.read()
-                        f.write(content)
+                    # Track file in database
+                    database_service.add_uploaded_file(
+                        project_id=project_id,
+                        file_type='defective_images',
+                        filename=uploaded_file.filename,
+                        original_filename=uploaded_file.filename,
+                        storage_url=storage_url,
+                        storage_path=storage_path,
+                        file_size_bytes=len(content),
+                        content_type="image/jpeg"
+                    )
                     
                     uploaded_files.append({
                         'filename': uploaded_file.filename,
                         'size': len(content),
-                        'path': file_path
+                        'storage_path': storage_path,
+                        'storage_url': storage_url
                     })
                 else:
                     failed_uploads.append({
@@ -779,7 +913,7 @@ async def upload_defective_images_to_project(
                     'reason': str(e)
                 })
         
-        print(f"📁 Uploaded {len(uploaded_files)} defective images to {defective_images_dir}")
+        print(f"📁 Uploaded {len(uploaded_files)} defective images to {dirs['defective_images']}")
         
         return JSONResponse({
             'status': 'success',
@@ -809,27 +943,19 @@ async def extract_defective_roi(
     upload-defective-images endpoint.
     """
     try:
-        # Get project and defective images directory
-        project_dir = os.path.join("ml/auto_annotation/projects", project_id)
-        defective_images_dir = os.path.join(project_dir, "defective_images")
-        defective_roi_dir = os.path.join(project_dir, "defective_roi_cache")
-        
-        # Check if project exists
-        if not os.path.exists(project_dir):
-            raise HTTPException(status_code=404, detail="Project not found")
+        # Ensure project exists and get directories
+        await ensure_project_exists(project_id)
+        dirs = await get_project_directories(project_id)
         
         # Check if defective images have been uploaded
-        if not os.path.exists(defective_images_dir):
+        defective_image_files = await storage_service.list_files(dirs['defective_images'], '.jpg')
+        defective_image_files.extend(await storage_service.list_files(dirs['defective_images'], '.jpeg'))
+        defective_image_files.extend(await storage_service.list_files(dirs['defective_images'], '.png'))
+        
+        if not defective_image_files:
             raise HTTPException(status_code=400, detail="No defective images found. Please upload defective images first.")
         
-        # Get all defective image paths
-        defective_image_paths = []
-        for filename in os.listdir(defective_images_dir):
-            if filename.lower().endswith(('.jpg', '.jpeg', '.png')):
-                defective_image_paths.append(os.path.join(defective_images_dir, filename))
-        
-        if not defective_image_paths:
-            raise HTTPException(status_code=400, detail="No valid defective images found. Please upload defective images first.")
+        print(f"📂 Found {len(defective_image_files)} defective images to process")
         
         # Create defective ROI cache directory
         os.makedirs(defective_roi_dir, exist_ok=True)
@@ -2931,18 +3057,6 @@ async def export_annotation_results(project_id: str, format: str = "json"):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.delete("/projects/{project_id}")
-async def delete_project(project_id: str):
-    """Delete a project and all its data"""
-    try:
-        # This would safely delete project directory and all associated files
-        return JSONResponse({
-            "status": "success", 
-            "message": f"Project {project_id} deleted successfully"
-        })
-        
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
 
 # =============================================================================
 # STATUS AND HEALTH ENDPOINTS
@@ -2960,13 +3074,14 @@ async def get_auto_annotation_status():
             "opencv_available": True,  # Would check OpenCV
         }
         
-        projects = auto_annotation_service.get_projects()
+        projects_result = database_service.list_projects()
+        projects = projects_result['projects'] if projects_result['status'] == 'success' else []
         
         return JSONResponse({
             "status": "ready" if all(dependencies.values()) else "dependencies_missing",
             "dependencies": dependencies,
             "total_projects": len(projects),
-            "active_projects": len([p for p in projects if p['training_status'] == 'completed']),
+            "active_projects": len([p for p in projects if p['status'] == 'active']),
             "message": "Auto-annotation service ready" if all(dependencies.values()) 
                       else "Some dependencies missing"
         })

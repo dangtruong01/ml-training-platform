@@ -46,12 +46,9 @@ class GoogleCloudStorageService(BaseStorageService):
         blob_path = self._get_blob_path(file_path)
         blob = self._bucket.blob(blob_path)
         
-        if content_type:
-            blob.content_type = content_type
-        
         # Upload in a thread to avoid blocking
         await asyncio.get_event_loop().run_in_executor(
-            None, blob.upload_from_string, file_data
+            None, blob.upload_from_string, file_data, content_type
         )
         
         return f"gs://{self.bucket_name}/{blob_path}"

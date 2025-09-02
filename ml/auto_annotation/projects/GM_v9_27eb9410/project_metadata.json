@@ -1,0 +1,13 @@
+{
+  "project_id": "GM_v9_27eb9410",
+  "project_name": "GM_v9",
+  "project_type": "object_detection",
+  "description": "GM_v9",
+  "created_at": "2025-09-02T17:13:12.811291",
+  "status": "data_uploaded",
+  "training_status": "not_started",
+  "model_path": null,
+  "classes": [],
+  "training_images_count": 17,
+  "model_metrics": {}
+}

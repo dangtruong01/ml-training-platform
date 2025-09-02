@@ -1,6 +1,6 @@
 import os
 import asyncio
-from typing import Dict, List
+from typing import Dict, List, Any
 from .local_storage import LocalStorageService
 from .gcs_storage import GoogleCloudStorageService
 

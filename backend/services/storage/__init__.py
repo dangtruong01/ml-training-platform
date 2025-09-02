@@ -1,6 +1,10 @@
 import os
+from dotenv import load_dotenv
 from .base_storage import BaseStorageService
 from .local_storage import LocalStorageService
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 def get_storage_service() -> BaseStorageService:
