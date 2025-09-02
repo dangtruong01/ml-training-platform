@@ -1,0 +1,2219 @@
+{
+  "stage1_completed": true,
+  "stage1_method": "manufacturing_segmentation",
+  "stage1_results": {
+    "status": "success",
+    "roi_method": "manufacturing_segmentation",
+    "training_roi_result": {
+      "status": "success",
+      "project_id": "GM_v7_5476a752",
+      "roi_method": "manufacturing_segmentation",
+      "total_processed": 100,
+      "total_failed": 0,
+      "roi_results": [
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/63.jpg",
+          "image_name": "63.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/63_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/63_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/77.jpg",
+          "image_name": "77.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/77_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/77_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/88.jpg",
+          "image_name": "88.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/88_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/88_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/89.jpg",
+          "image_name": "89.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/89_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/89_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/76.jpg",
+          "image_name": "76.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/76_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/76_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/62.jpg",
+          "image_name": "62.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/62_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/62_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/74.jpg",
+          "image_name": "74.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/74_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/74_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/60.jpg",
+          "image_name": "60.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/60_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/60_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/48.jpg",
+          "image_name": "48.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/48_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/48_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/49.jpg",
+          "image_name": "49.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/49_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/49_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/61.jpg",
+          "image_name": "61.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/61_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/61_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/75.jpg",
+          "image_name": "75.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/75_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/75_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/59.jpg",
+          "image_name": "59.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/59_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/59_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/71.jpg",
+          "image_name": "71.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/71_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/71_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/65.jpg",
+          "image_name": "65.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/65_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/65_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/64.jpg",
+          "image_name": "64.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/64_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/64_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/70.jpg",
+          "image_name": "70.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/70_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/70_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/58.jpg",
+          "image_name": "58.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/58_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/58_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/8.jpg",
+          "image_name": "8.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/8_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/8_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/66.jpg",
+          "image_name": "66.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/66_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/66_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/72.jpg",
+          "image_name": "72.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/72_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/72_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/99.jpg",
+          "image_name": "99.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/99_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/99_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/98.jpg",
+          "image_name": "98.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/98_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/98_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/73.jpg",
+          "image_name": "73.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/73_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/73_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/67.jpg",
+          "image_name": "67.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/67_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/67_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/9.jpg",
+          "image_name": "9.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/9_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/9_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/14.jpg",
+          "image_name": "14.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/14_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/14_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/28.jpg",
+          "image_name": "28.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/28_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/28_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/100.jpg",
+          "image_name": "100.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/100_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/100_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/29.jpg",
+          "image_name": "29.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/29_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/29_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/15.jpg",
+          "image_name": "15.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/15_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/15_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/17.jpg",
+          "image_name": "17.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/17_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/17_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/16.jpg",
+          "image_name": "16.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/16_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/16_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/12.jpg",
+          "image_name": "12.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/12_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/12_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/13.jpg",
+          "image_name": "13.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/13_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/13_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/39.jpg",
+          "image_name": "39.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/39_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/39_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/11.jpg",
+          "image_name": "11.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/11_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/11_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/10.jpg",
+          "image_name": "10.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/10_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/10_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/38.jpg",
+          "image_name": "38.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/38_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/38_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/21.jpg",
+          "image_name": "21.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/21_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/21_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/35.jpg",
+          "image_name": "35.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/35_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/35_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/34.jpg",
+          "image_name": "34.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/34_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/34_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/20.jpg",
+          "image_name": "20.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/20_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/20_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            2849,
+            1230
+          ],
+          "roi_width": 2849,
+          "roi_height": 1230,
+          "original_size": [
+            1230,
+            2849
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/36.jpg",
+          "image_name": "36.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/36_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/36_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/22.jpg",
+          "image_name": "22.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/22_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/22_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/23.jpg",
+          "image_name": "23.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/23_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/23_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/37.jpg",
+          "image_name": "37.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/37_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/37_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/33.jpg",
+          "image_name": "33.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/33_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/33_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/27.jpg",
+          "image_name": "27.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/27_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/27_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/26.jpg",
+          "image_name": "26.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/26_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/26_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/32.jpg",
+          "image_name": "32.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/32_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/32_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/18.jpg",
+          "image_name": "18.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/18_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/18_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/24.jpg",
+          "image_name": "24.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/24_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/24_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/30.jpg",
+          "image_name": "30.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/30_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/30_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/31.jpg",
+          "image_name": "31.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/31_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/31_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/25.jpg",
+          "image_name": "25.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/25_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/25_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/19.jpg",
+          "image_name": "19.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/19_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/19_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/42.jpg",
+          "image_name": "42.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/42_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/42_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/4.jpg",
+          "image_name": "4.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/4_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/4_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/56.jpg",
+          "image_name": "56.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/56_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/56_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/81.jpg",
+          "image_name": "81.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/81_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/81_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/95.jpg",
+          "image_name": "95.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/95_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/95_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/94.jpg",
+          "image_name": "94.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/94_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/94_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/80.jpg",
+          "image_name": "80.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/80_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/80_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/5.jpg",
+          "image_name": "5.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/5_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/5_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/57.jpg",
+          "image_name": "57.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/57_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/57_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/43.jpg",
+          "image_name": "43.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/43_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/43_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/55.jpg",
+          "image_name": "55.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/55_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/55_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/7.jpg",
+          "image_name": "7.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/7_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/7_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/41.jpg",
+          "image_name": "41.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/41_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/41_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/69.jpg",
+          "image_name": "69.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/69_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/69_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/96.jpg",
+          "image_name": "96.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/96_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/96_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/82.jpg",
+          "image_name": "82.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/82_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/82_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/83.jpg",
+          "image_name": "83.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/83_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/83_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/97.jpg",
+          "image_name": "97.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/97_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/97_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/68.jpg",
+          "image_name": "68.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/68_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/68_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/40.jpg",
+          "image_name": "40.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/40_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/40_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/54.jpg",
+          "image_name": "54.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/54_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/54_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/6.jpg",
+          "image_name": "6.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/6_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/6_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/78.jpg",
+          "image_name": "78.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/78_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/78_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/2.jpg",
+          "image_name": "2.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/2_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/2_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/50.jpg",
+          "image_name": "50.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/50_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/50_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/44.jpg",
+          "image_name": "44.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/44_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/44_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/93.jpg",
+          "image_name": "93.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/93_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/93_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/87.jpg",
+          "image_name": "87.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/87_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/87_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/86.jpg",
+          "image_name": "86.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/86_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/86_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/92.jpg",
+          "image_name": "92.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/92_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/92_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/45.jpg",
+          "image_name": "45.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/45_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/45_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/3.jpg",
+          "image_name": "3.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/3_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/3_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/51.jpg",
+          "image_name": "51.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/51_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/51_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/79.jpg",
+          "image_name": "79.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/79_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/79_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/47.jpg",
+          "image_name": "47.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/47_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/47_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/53.jpg",
+          "image_name": "53.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/53_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/53_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/1.jpg",
+          "image_name": "1.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/1_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/1_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/84.jpg",
+          "image_name": "84.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/84_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/84_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/90.jpg",
+          "image_name": "90.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/90_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/90_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/91.jpg",
+          "image_name": "91.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/91_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/91_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3990,
+            1531
+          ],
+          "roi_width": 3990,
+          "roi_height": 1531,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/85.jpg",
+          "image_name": "85.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/85_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/85_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/52.jpg",
+          "image_name": "52.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/52_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/52_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/training_images/46.jpg",
+          "image_name": "46.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/roi_cache/46_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_training/46_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        }
+      ],
+      "failed_images": []
+    },
+    "defective_roi_result": {
+      "status": "success",
+      "project_id": "GM_v7_5476a752",
+      "roi_method": "manufacturing_segmentation",
+      "total_processed": 15,
+      "total_failed": 0,
+      "roi_results": [
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352.jpg",
+          "image_name": "KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352_part_mask.png",
+          "roi_bbox": [
+            186,
+            215,
+            3893,
+            1276
+          ],
+          "roi_width": 3707,
+          "roi_height": 1061,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846.jpg",
+          "image_name": "KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846_part_mask.png",
+          "roi_bbox": [
+            204,
+            130,
+            3990,
+            1428
+          ],
+          "roi_width": 3786,
+          "roi_height": 1298,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507.jpg",
+          "image_name": "KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507_part_mask.png",
+          "roi_bbox": [
+            168,
+            211,
+            3893,
+            1265
+          ],
+          "roi_width": 3725,
+          "roi_height": 1054,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820.jpg",
+          "image_name": "KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820_part_mask.png",
+          "roi_bbox": [
+            189,
+            202,
+            3982,
+            1398
+          ],
+          "roi_width": 3793,
+          "roi_height": 1196,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028.jpg",
+          "image_name": "KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3982,
+            1496
+          ],
+          "roi_width": 3982,
+          "roi_height": 1496,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120.jpg",
+          "image_name": "KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120_part_mask.png",
+          "roi_bbox": [
+            182,
+            251,
+            3990,
+            1485
+          ],
+          "roi_width": 3808,
+          "roi_height": 1234,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8A771D00014KZ+A958P_M05_1_20250706081429.jpg",
+          "image_name": "KJCHH8A771D00014KZ+A958P_M05_1_20250706081429.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8A771D00014KZ+A958P_M05_1_20250706081429_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8A771D00014KZ+A958P_M05_1_20250706081429_part_mask.png",
+          "roi_bbox": [
+            192,
+            262,
+            3990,
+            1357
+          ],
+          "roi_width": 3798,
+          "roi_height": 1095,
+          "original_size": [
+            1531,
+            3990
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033.jpg",
+          "image_name": "KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3928,
+            1427
+          ],
+          "roi_width": 3928,
+          "roi_height": 1427,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352.jpg",
+          "image_name": "KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352_part_mask.png",
+          "roi_bbox": [
+            206,
+            274,
+            3928,
+            1305
+          ],
+          "roi_width": 3722,
+          "roi_height": 1031,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051.jpg",
+          "image_name": "KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051_part_mask.png",
+          "roi_bbox": [
+            170,
+            52,
+            3893,
+            1225
+          ],
+          "roi_width": 3723,
+          "roi_height": 1173,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423.jpg",
+          "image_name": "KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423_part_mask.png",
+          "roi_bbox": [
+            167,
+            228,
+            3893,
+            1285
+          ],
+          "roi_width": 3726,
+          "roi_height": 1057,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033.jpg",
+          "image_name": "KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033_part_mask.png",
+          "roi_bbox": [
+            0,
+            0,
+            3893,
+            1478
+          ],
+          "roi_width": 3893,
+          "roi_height": 1478,
+          "original_size": [
+            1478,
+            3893
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621.jpg",
+          "image_name": "KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621_part_mask.png",
+          "roi_bbox": [
+            154,
+            238,
+            3982,
+            1313
+          ],
+          "roi_width": 3828,
+          "roi_height": 1075,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252.jpg",
+          "image_name": "KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252_part_mask.png",
+          "roi_bbox": [
+            118,
+            199,
+            3928,
+            1284
+          ],
+          "roi_width": 3810,
+          "roi_height": 1085,
+          "original_size": [
+            1427,
+            3928
+          ],
+          "status": "success"
+        },
+        {
+          "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841.jpg",
+          "image_name": "KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841_part_mask.png",
+          "roi_bbox": [
+            207,
+            0,
+            3982,
+            1419
+          ],
+          "roi_width": 3775,
+          "roi_height": 1419,
+          "original_size": [
+            1496,
+            3982
+          ],
+          "status": "success"
+        }
+      ],
+      "failed_images": []
+    },
+    "total_images": 115,
+    "successful_extractions": 115,
+    "failed_extractions": 0,
+    "message": "ROI extraction completed using manufacturing_segmentation"
+  },
+  "training_images_count": 100,
+  "defective_images_count": 15
+}

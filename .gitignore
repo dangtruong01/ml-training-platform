@@ -1,0 +1,66 @@
+# Ignore temporary files
+temp_images/
+
+# Ignore log files
+*.log
+*.tmp
+
+# Ignore build artifacts
+build/
+dist/
+
+# Ignore configuration files
+config/*.json
+config/*.yml
+
+# Ignore documentation files
+docs/*.md
+
+# Ignore test files
+tests/*.py
+
+# Ignore virtual environment directories
+venv/
+.env
+
+# Ignore all images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+
+# Ignore compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# All images
+*.png
+*.jpg
+*.jpeg
+
+
+# Claude config
+.claude
+
+
+# GroundingDINO folder
+GroundingDINO/
+
+
+# Datasets
+annotated_dataset/
+yolo_dataset/
+ml/datasets/

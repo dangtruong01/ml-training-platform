@@ -1,0 +1,13 @@
+{
+  "project_id": "GM_v8_0eb191f1",
+  "project_name": "GM_v8",
+  "project_type": "anomaly_detection",
+  "description": "GM_v8",
+  "created_at": "2025-08-26T17:25:24.303426",
+  "status": "data_uploaded",
+  "training_status": "not_started",
+  "model_path": null,
+  "classes": [],
+  "training_images_count": 100,
+  "model_metrics": {}
+}

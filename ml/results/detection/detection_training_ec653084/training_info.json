@@ -1,0 +1,8 @@
+{
+  "task_id": "detection_training_ec653084",
+  "pid": 42843,
+  "dataset_path": "/Users/truonghaidang/Desktop/open-trainer/ml/datasets/detection/34383024-58ba-4f35-9c73-abbba4197bb1/extracted/yolo_dataset/data.yaml",
+  "results_dir": "/Users/truonghaidang/Desktop/open-trainer/ml/results/detection/detection_training_ec653084",
+  "status": "running",
+  "started_at": "42843"
+}

@@ -1,0 +1,298 @@
+{
+  "project_id": "GM_v7_5476a752",
+  "roi_method": "manufacturing_segmentation",
+  "manufacturing_scenario": "general",
+  "part_material": "metal",
+  "fixture_type": "tray",
+  "fixture_color": "blue",
+  "total_processed": 15,
+  "total_failed": 0,
+  "roi_results": [
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352.jpg",
+      "image_name": "KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352_part_mask.png",
+      "roi_bbox": [
+        186,
+        215,
+        3893,
+        1276
+      ],
+      "roi_width": 3707,
+      "roi_height": 1061,
+      "original_size": [
+        1478,
+        3893
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846.jpg",
+      "image_name": "KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846_part_mask.png",
+      "roi_bbox": [
+        204,
+        130,
+        3990,
+        1428
+      ],
+      "roi_width": 3786,
+      "roi_height": 1298,
+      "original_size": [
+        1531,
+        3990
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507.jpg",
+      "image_name": "KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507_part_mask.png",
+      "roi_bbox": [
+        168,
+        211,
+        3893,
+        1265
+      ],
+      "roi_width": 3725,
+      "roi_height": 1054,
+      "original_size": [
+        1478,
+        3893
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820.jpg",
+      "image_name": "KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820_part_mask.png",
+      "roi_bbox": [
+        189,
+        202,
+        3982,
+        1398
+      ],
+      "roi_width": 3793,
+      "roi_height": 1196,
+      "original_size": [
+        1496,
+        3982
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028.jpg",
+      "image_name": "KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028_part_mask.png",
+      "roi_bbox": [
+        0,
+        0,
+        3982,
+        1496
+      ],
+      "roi_width": 3982,
+      "roi_height": 1496,
+      "original_size": [
+        1496,
+        3982
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120.jpg",
+      "image_name": "KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120_part_mask.png",
+      "roi_bbox": [
+        182,
+        251,
+        3990,
+        1485
+      ],
+      "roi_width": 3808,
+      "roi_height": 1234,
+      "original_size": [
+        1531,
+        3990
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8A771D00014KZ+A958P_M05_1_20250706081429.jpg",
+      "image_name": "KJCHH8A771D00014KZ+A958P_M05_1_20250706081429.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8A771D00014KZ+A958P_M05_1_20250706081429_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8A771D00014KZ+A958P_M05_1_20250706081429_part_mask.png",
+      "roi_bbox": [
+        192,
+        262,
+        3990,
+        1357
+      ],
+      "roi_width": 3798,
+      "roi_height": 1095,
+      "original_size": [
+        1531,
+        3990
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033.jpg",
+      "image_name": "KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033_part_mask.png",
+      "roi_bbox": [
+        0,
+        0,
+        3928,
+        1427
+      ],
+      "roi_width": 3928,
+      "roi_height": 1427,
+      "original_size": [
+        1427,
+        3928
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352.jpg",
+      "image_name": "KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352_part_mask.png",
+      "roi_bbox": [
+        206,
+        274,
+        3928,
+        1305
+      ],
+      "roi_width": 3722,
+      "roi_height": 1031,
+      "original_size": [
+        1427,
+        3928
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051.jpg",
+      "image_name": "KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051_part_mask.png",
+      "roi_bbox": [
+        170,
+        52,
+        3893,
+        1225
+      ],
+      "roi_width": 3723,
+      "roi_height": 1173,
+      "original_size": [
+        1478,
+        3893
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423.jpg",
+      "image_name": "KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423_part_mask.png",
+      "roi_bbox": [
+        167,
+        228,
+        3893,
+        1285
+      ],
+      "roi_width": 3726,
+      "roi_height": 1057,
+      "original_size": [
+        1478,
+        3893
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033.jpg",
+      "image_name": "KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033_part_mask.png",
+      "roi_bbox": [
+        0,
+        0,
+        3893,
+        1478
+      ],
+      "roi_width": 3893,
+      "roi_height": 1478,
+      "original_size": [
+        1478,
+        3893
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621.jpg",
+      "image_name": "KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621_part_mask.png",
+      "roi_bbox": [
+        154,
+        238,
+        3982,
+        1313
+      ],
+      "roi_width": 3828,
+      "roi_height": 1075,
+      "original_size": [
+        1496,
+        3982
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252.jpg",
+      "image_name": "KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252_part_mask.png",
+      "roi_bbox": [
+        118,
+        199,
+        3928,
+        1284
+      ],
+      "roi_width": 3810,
+      "roi_height": 1085,
+      "original_size": [
+        1427,
+        3928
+      ],
+      "status": "success"
+    },
+    {
+      "image_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_images/KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841.jpg",
+      "image_name": "KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841.jpg",
+      "roi_path": "ml/auto_annotation/projects/GM_v7_5476a752/defective_roi_cache/KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841_roi.jpg",
+      "mask_path": "ml/auto_annotation/projects/GM_v7_5476a752/manufacturing_masks_defective/KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841_part_mask.png",
+      "roi_bbox": [
+        207,
+        0,
+        3982,
+        1419
+      ],
+      "roi_width": 3775,
+      "roi_height": 1419,
+      "original_size": [
+        1496,
+        3982
+      ],
+      "status": "success"
+    }
+  ],
+  "failed_images": []
+}

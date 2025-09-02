@@ -1,0 +1,326 @@
+.model-training {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Training Status */
+.training-status {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.status-indicator {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.epoch-info {
+  color: #6c757d;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #007bff;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 40px;
+}
+
+/* Training Parameters */
+.training-params {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.training-params h5 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.params-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.param-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.param-item label {
+  color: #495057;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.param-item input,
+.param-item select {
+  padding: 8px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.param-item input:focus,
+.param-item select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.1);
+}
+
+.param-item input[type="range"] {
+  padding: 0;
+  margin: 5px 0;
+}
+
+.param-value {
+  color: #007bff;
+  font-weight: 500;
+  font-size: 12px;
+  align-self: flex-start;
+}
+
+.param-help {
+  color: #6c757d;
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* Training Metrics */
+.training-metrics {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.training-metrics h5 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.metric-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.metric-label {
+  color: #6c757d;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metric-value {
+  color: #495057;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Training Logs */
+.training-logs {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.training-logs h5 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.logs-container {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+}
+
+.log-entry {
+  color: #495057;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 2px;
+  padding: 2px 0;
+}
+
+.log-entry:last-child {
+  margin-bottom: 0;
+}
+
+/* Training Actions */
+.training-actions {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.start-training-button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.start-training-button:hover:not(:disabled) {
+  background: #218838;
+}
+
+.start-training-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.error-banner {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.success-banner {
+  background: #d4edda;
+  color: #155724;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Training Info */
+.training-info {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.training-info h5 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.info-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.step-number {
+  background: #007bff;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.step-text {
+  color: #495057;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .params-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .status-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .progress-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .progress-text {
+    text-align: center;
+  }
+}

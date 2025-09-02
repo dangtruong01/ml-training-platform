@@ -1,0 +1,54 @@
+{
+  "project_id": "test_project",
+  "feature_shape": [
+    5,
+    8,
+    8,
+    64
+  ],
+  "methods_trained": [
+    "ocsvm",
+    "isolation_forest",
+    "pca"
+  ],
+  "training_results": {
+    "ocsvm": {
+      "status": "success",
+      "threshold": -0.00017542004112678364,
+      "decision_scores_stats": {
+        "mean": 0.4688837427460772,
+        "std": 0.46189070952713035,
+        "min": -0.3368977102019106,
+        "max": 2.3287100013921314
+      }
+    },
+    "isolation_forest": {
+      "status": "success",
+      "threshold": -0.46127893746157955,
+      "anomaly_scores_stats": {
+        "mean": 0.027896441660777836,
+        "std": 0.01641761064562595,
+        "min": -0.03162692877886164,
+        "max": 0.06877447130194891
+      }
+    },
+    "pca": {
+      "status": "success",
+      "threshold": 43.89785641998999,
+      "n_components": 20,
+      "explained_variance": 0.4811860859506633,
+      "reconstruction_error_stats": {
+        "mean": 33.204090499157545,
+        "std": 6.682654644603599,
+        "min": 16.63741272423843,
+        "max": 59.17343261554308
+      }
+    }
+  },
+  "feature_stats": {
+    "original_dimensions": 64,
+    "pca_dimensions": 50,
+    "explained_variance": 0.8979510555780768,
+    "total_patches": 320
+  }
+}

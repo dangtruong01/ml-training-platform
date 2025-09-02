@@ -1,0 +1,2100 @@
+{
+  "stage1_completed": true,
+  "stage1_method": "segmentation_mask",
+  "stage1_results": {
+    "status": "success",
+    "roi_method": "segmentation_mask",
+    "training_roi_result": {
+      "status": "success",
+      "total_images": 100,
+      "successful_extractions": 100,
+      "roi_data": [
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/63.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/63_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/63_mask.png",
+          "bbox": [
+            482,
+            90,
+            3247,
+            1248
+          ],
+          "confidence": 0.4994341731071472,
+          "segmentation_score": 0.8175730109214783,
+          "roi_size": [
+            1163,
+            2734
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/77.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/77_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/77_mask.png",
+          "bbox": [
+            451,
+            81,
+            3196,
+            1241
+          ],
+          "confidence": 0.4382874667644501,
+          "segmentation_score": 0.9346410632133484,
+          "roi_size": [
+            1170,
+            2701
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/88.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/88_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/88_mask.png",
+          "bbox": [
+            437,
+            128,
+            3214,
+            1282
+          ],
+          "confidence": 0.4255446195602417,
+          "segmentation_score": 0.9853841662406921,
+          "roi_size": [
+            1159,
+            2806
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/89.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/89_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/89_mask.png",
+          "bbox": [
+            467,
+            100,
+            3246,
+            1261
+          ],
+          "confidence": 0.5201764106750488,
+          "segmentation_score": 0.7910561561584473,
+          "roi_size": [
+            1161,
+            2801
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/76.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/76_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/76_mask.png",
+          "bbox": [
+            440,
+            39,
+            3189,
+            1207
+          ],
+          "confidence": 0.4778498411178589,
+          "segmentation_score": 0.9478120803833008,
+          "roi_size": [
+            1178,
+            2750
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/62.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/62_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/62_mask.png",
+          "bbox": [
+            472,
+            108,
+            3249,
+            1273
+          ],
+          "confidence": 0.41126784682273865,
+          "segmentation_score": 0.9906874299049377,
+          "roi_size": [
+            1168,
+            2780
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/74.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/74_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/74_mask.png",
+          "bbox": [
+            449,
+            65,
+            3216,
+            1227
+          ],
+          "confidence": 0.45635390281677246,
+          "segmentation_score": 0.9378332495689392,
+          "roi_size": [
+            1169,
+            2720
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/60.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/60_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/60_mask.png",
+          "bbox": [
+            460,
+            79,
+            3232,
+            1243
+          ],
+          "confidence": 0.4630827009677887,
+          "segmentation_score": 0.9858852624893188,
+          "roi_size": [
+            1166,
+            2795
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/48.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/48_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/48_mask.png",
+          "bbox": [
+            426,
+            66,
+            3179,
+            1215
+          ],
+          "confidence": 0.48433318734169006,
+          "segmentation_score": 0.9777206778526306,
+          "roi_size": [
+            1146,
+            2739
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/49.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/49_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/49_mask.png",
+          "bbox": [
+            433,
+            86,
+            3183,
+            1241
+          ],
+          "confidence": 0.43901577591896057,
+          "segmentation_score": 0.9475045204162598,
+          "roi_size": [
+            1159,
+            2763
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/61.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/61_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/61_mask.png",
+          "bbox": [
+            452,
+            120,
+            3212,
+            1274
+          ],
+          "confidence": 0.43669191002845764,
+          "segmentation_score": 0.992184579372406,
+          "roi_size": [
+            1155,
+            2729
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/75.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/75_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/75_mask.png",
+          "bbox": [
+            436,
+            49,
+            3210,
+            1219
+          ],
+          "confidence": 0.4370923936367035,
+          "segmentation_score": 0.9583286643028259,
+          "roi_size": [
+            1168,
+            2735
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/59.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/59_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/59_mask.png",
+          "bbox": [
+            443,
+            130,
+            3221,
+            1283
+          ],
+          "confidence": 0.3948643207550049,
+          "segmentation_score": 0.9930885434150696,
+          "roi_size": [
+            1156,
+            2785
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/71.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/71_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/71_mask.png",
+          "bbox": [
+            438,
+            55,
+            3185,
+            1205
+          ],
+          "confidence": 0.4568266272544861,
+          "segmentation_score": 0.871428370475769,
+          "roi_size": [
+            1149,
+            2771
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/65.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/65_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/65_mask.png",
+          "bbox": [
+            440,
+            75,
+            3203,
+            1244
+          ],
+          "confidence": 0.4798992872238159,
+          "segmentation_score": 0.9726596474647522,
+          "roi_size": [
+            1177,
+            2726
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/64.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/64_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/64_mask.png",
+          "bbox": [
+            422,
+            73,
+            3208,
+            1250
+          ],
+          "confidence": 0.4215075969696045,
+          "segmentation_score": 0.9640452861785889,
+          "roi_size": [
+            1181,
+            2741
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/70.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/70_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/70_mask.png",
+          "bbox": [
+            440,
+            47,
+            3214,
+            1205
+          ],
+          "confidence": 0.4435570538043976,
+          "segmentation_score": 0.9126021862030029,
+          "roi_size": [
+            1156,
+            2754
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/58.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/58_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/58_mask.png",
+          "bbox": [
+            441,
+            88,
+            3229,
+            1251
+          ],
+          "confidence": 0.530064582824707,
+          "segmentation_score": 0.992138683795929,
+          "roi_size": [
+            1166,
+            2801
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/8.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/8_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/8_mask.png",
+          "bbox": [
+            423,
+            76,
+            3165,
+            1234
+          ],
+          "confidence": 0.4569352865219116,
+          "segmentation_score": 0.9774147272109985,
+          "roi_size": [
+            1161,
+            2701
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/66.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/66_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/66_mask.png",
+          "bbox": [
+            460,
+            101,
+            3217,
+            1256
+          ],
+          "confidence": 0.45396891236305237,
+          "segmentation_score": 0.9595539569854736,
+          "roi_size": [
+            1156,
+            2721
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/72.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/72_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/72_mask.png",
+          "bbox": [
+            453,
+            54,
+            3208,
+            1226
+          ],
+          "confidence": 0.40618613362312317,
+          "segmentation_score": 0.8355035781860352,
+          "roi_size": [
+            1199,
+            2793
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/99.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/99_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/99_mask.png",
+          "bbox": [
+            428,
+            60,
+            3201,
+            1219
+          ],
+          "confidence": 0.514942467212677,
+          "segmentation_score": 0.9496017694473267,
+          "roi_size": [
+            1156,
+            2715
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/98.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/98_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/98_mask.png",
+          "bbox": [
+            447,
+            105,
+            3202,
+            1246
+          ],
+          "confidence": 0.4933982491493225,
+          "segmentation_score": 0.8488788604736328,
+          "roi_size": [
+            1144,
+            2714
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/73.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/73_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/73_mask.png",
+          "bbox": [
+            442,
+            61,
+            3185,
+            1208
+          ],
+          "confidence": 0.47796839475631714,
+          "segmentation_score": 0.9259793162345886,
+          "roi_size": [
+            1147,
+            2701
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/67.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/67_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/67_mask.png",
+          "bbox": [
+            418,
+            147,
+            3193,
+            1295
+          ],
+          "confidence": 0.44899386167526245,
+          "segmentation_score": 0.9872075915336609,
+          "roi_size": [
+            1156,
+            2799
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/9.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/9_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/9_mask.png",
+          "bbox": [
+            416,
+            80,
+            3171,
+            1261
+          ],
+          "confidence": 0.3994824290275574,
+          "segmentation_score": 0.946245014667511,
+          "roi_size": [
+            1185,
+            2715
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/14.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/14_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/14_mask.png",
+          "bbox": [
+            476,
+            82,
+            3235,
+            1253
+          ],
+          "confidence": 0.39774104952812195,
+          "segmentation_score": 0.9780068397521973,
+          "roi_size": [
+            1182,
+            2768
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/28.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/28_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/28_mask.png",
+          "bbox": [
+            428,
+            66,
+            3192,
+            1231
+          ],
+          "confidence": 0.4544108510017395,
+          "segmentation_score": 0.9863085150718689,
+          "roi_size": [
+            1172,
+            2777
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/100.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/100_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/100_mask.png",
+          "bbox": [
+            450,
+            50,
+            3236,
+            1207
+          ],
+          "confidence": 0.5246996879577637,
+          "segmentation_score": 0.9265334010124207,
+          "roi_size": [
+            1166,
+            2793
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/29.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/29_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/29_mask.png",
+          "bbox": [
+            408,
+            46,
+            3171,
+            1212
+          ],
+          "confidence": 0.45243144035339355,
+          "segmentation_score": 0.9428611993789673,
+          "roi_size": [
+            1170,
+            2716
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/15.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/15_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/15_mask.png",
+          "bbox": [
+            425,
+            85,
+            3204,
+            1251
+          ],
+          "confidence": 0.47664618492126465,
+          "segmentation_score": 0.9657874703407288,
+          "roi_size": [
+            1168,
+            2737
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/17.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/17_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/17_mask.png",
+          "bbox": [
+            449,
+            116,
+            3203,
+            1264
+          ],
+          "confidence": 0.4571897089481354,
+          "segmentation_score": 0.9619579315185547,
+          "roi_size": [
+            1156,
+            2717
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/16.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/16_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/16_mask.png",
+          "bbox": [
+            428,
+            121,
+            3188,
+            1277
+          ],
+          "confidence": 0.43983209133148193,
+          "segmentation_score": 0.9867908358573914,
+          "roi_size": [
+            1158,
+            2733
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/12.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/12_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/12_mask.png",
+          "bbox": [
+            460,
+            90,
+            3219,
+            1261
+          ],
+          "confidence": 0.46581748127937317,
+          "segmentation_score": 0.9873355031013489,
+          "roi_size": [
+            1174,
+            2726
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/13.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/13_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/13_mask.png",
+          "bbox": [
+            472,
+            92,
+            3242,
+            1244
+          ],
+          "confidence": 0.5427717566490173,
+          "segmentation_score": 0.9069855809211731,
+          "roi_size": [
+            1157,
+            2726
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/39.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/39_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/39_mask.png",
+          "bbox": [
+            455,
+            117,
+            3226,
+            1277
+          ],
+          "confidence": 0.4294176697731018,
+          "segmentation_score": 0.9888463616371155,
+          "roi_size": [
+            1164,
+            2775
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/11.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/11_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/11_mask.png",
+          "bbox": [
+            455,
+            36,
+            3228,
+            1228
+          ],
+          "confidence": 0.5659608244895935,
+          "segmentation_score": 0.9422626495361328,
+          "roi_size": [
+            1198,
+            2750
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/10.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/10_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/10_mask.png",
+          "bbox": [
+            406,
+            64,
+            3172,
+            1240
+          ],
+          "confidence": 0.45698535442352295,
+          "segmentation_score": 0.9358180165290833,
+          "roi_size": [
+            1180,
+            2717
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/38.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/38_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/38_mask.png",
+          "bbox": [
+            467,
+            107,
+            3236,
+            1263
+          ],
+          "confidence": 0.4932261109352112,
+          "segmentation_score": 0.9718753695487976,
+          "roi_size": [
+            1159,
+            2785
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/21.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/21_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/21_mask.png",
+          "bbox": [
+            478,
+            71,
+            3219,
+            1231
+          ],
+          "confidence": 0.5156108140945435,
+          "segmentation_score": 0.8487340211868286,
+          "roi_size": [
+            1170,
+            2757
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/35.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/35_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/35_mask.png",
+          "bbox": [
+            459,
+            109,
+            3232,
+            1278
+          ],
+          "confidence": 0.4475058913230896,
+          "segmentation_score": 0.9780674576759338,
+          "roi_size": [
+            1178,
+            2771
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/34.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/34_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/34_mask.png",
+          "bbox": [
+            475,
+            79,
+            3246,
+            1251
+          ],
+          "confidence": 0.49889272451400757,
+          "segmentation_score": 0.9062126874923706,
+          "roi_size": [
+            1176,
+            2738
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/20.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/20_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/20_mask.png",
+          "bbox": [
+            115,
+            222,
+            2454,
+            1213
+          ],
+          "confidence": 0.760190486907959,
+          "segmentation_score": 0.9939133524894714,
+          "roi_size": [
+            1003,
+            2340
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/36.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/36_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/36_mask.png",
+          "bbox": [
+            3168,
+            346,
+            3912,
+            1219
+          ],
+          "confidence": 0.385423481464386,
+          "segmentation_score": 0.9428485035896301,
+          "roi_size": [
+            874,
+            759
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/22.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/22_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/22_mask.png",
+          "bbox": [
+            469,
+            23,
+            3210,
+            1189
+          ],
+          "confidence": 0.484239786863327,
+          "segmentation_score": 0.860675573348999,
+          "roi_size": [
+            1177,
+            2697
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/23.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/23_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/23_mask.png",
+          "bbox": [
+            484,
+            77,
+            3228,
+            1231
+          ],
+          "confidence": 0.4685649573802948,
+          "segmentation_score": 0.9020879864692688,
+          "roi_size": [
+            1165,
+            2702
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/37.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/37_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/37_mask.png",
+          "bbox": [
+            444,
+            157,
+            3214,
+            1304
+          ],
+          "confidence": 0.42947864532470703,
+          "segmentation_score": 0.9928672313690186,
+          "roi_size": [
+            1156,
+            2738
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/33.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/33_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/33_mask.png",
+          "bbox": [
+            455,
+            117,
+            3226,
+            1277
+          ],
+          "confidence": 0.4294176697731018,
+          "segmentation_score": 0.9888463616371155,
+          "roi_size": [
+            1164,
+            2775
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/27.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/27_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/27_mask.png",
+          "bbox": [
+            428,
+            31,
+            3173,
+            1196
+          ],
+          "confidence": 0.43903934955596924,
+          "segmentation_score": 0.957404613494873,
+          "roi_size": [
+            1173,
+            2717
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/26.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/26_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/26_mask.png",
+          "bbox": [
+            457,
+            59,
+            3214,
+            1218
+          ],
+          "confidence": 0.46856579184532166,
+          "segmentation_score": 0.9661223888397217,
+          "roi_size": [
+            1159,
+            2725
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/32.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/32_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/32_mask.png",
+          "bbox": [
+            467,
+            107,
+            3236,
+            1263
+          ],
+          "confidence": 0.4932261109352112,
+          "segmentation_score": 0.9718753695487976,
+          "roi_size": [
+            1159,
+            2785
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/18.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/18_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/18_mask.png",
+          "bbox": [
+            434,
+            82,
+            3193,
+            1255
+          ],
+          "confidence": 0.42166954278945923,
+          "segmentation_score": 0.9883655309677124,
+          "roi_size": [
+            1179,
+            2770
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/24.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/24_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/24_mask.png",
+          "bbox": [
+            460,
+            35,
+            3211,
+            1199
+          ],
+          "confidence": 0.5020195245742798,
+          "segmentation_score": 0.8507989645004272,
+          "roi_size": [
+            1172,
+            2762
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/30.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/30_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/30_mask.png",
+          "bbox": [
+            432,
+            103,
+            3964,
+            1297
+          ],
+          "confidence": 0.3999142646789551,
+          "segmentation_score": 0.9775851368904114,
+          "roi_size": [
+            1171,
+            3538
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/31.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/31_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/31_mask.png",
+          "bbox": [
+            457,
+            74,
+            3226,
+            1253
+          ],
+          "confidence": 0.5341012477874756,
+          "segmentation_score": 0.8894245624542236,
+          "roi_size": [
+            1186,
+            2750
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/25.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/25_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/25_mask.png",
+          "bbox": [
+            472,
+            60,
+            3235,
+            1225
+          ],
+          "confidence": 0.4515681564807892,
+          "segmentation_score": 0.9401800632476807,
+          "roi_size": [
+            1175,
+            2715
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/19.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/19_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/19_mask.png",
+          "bbox": [
+            447,
+            99,
+            3207,
+            1263
+          ],
+          "confidence": 0.46064484119415283,
+          "segmentation_score": 0.9868198037147522,
+          "roi_size": [
+            1167,
+            2709
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/42.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/42_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/42_mask.png",
+          "bbox": [
+            426,
+            52,
+            3179,
+            1200
+          ],
+          "confidence": 0.40644100308418274,
+          "segmentation_score": 0.9442283511161804,
+          "roi_size": [
+            1151,
+            2753
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/4.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/4_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/4_mask.png",
+          "bbox": [
+            431,
+            72,
+            3211,
+            1251
+          ],
+          "confidence": 0.4575100541114807,
+          "segmentation_score": 0.9631147384643555,
+          "roi_size": [
+            1186,
+            2736
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/56.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/56_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/56_mask.png",
+          "bbox": [
+            444,
+            80,
+            3227,
+            1242
+          ],
+          "confidence": 0.5388188362121582,
+          "segmentation_score": 0.9751412868499756,
+          "roi_size": [
+            1169,
+            2810
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/81.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/81_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/81_mask.png",
+          "bbox": [
+            461,
+            73,
+            3236,
+            1230
+          ],
+          "confidence": 0.48664620518684387,
+          "segmentation_score": 0.863869309425354,
+          "roi_size": [
+            1157,
+            2794
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/95.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/95_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/95_mask.png",
+          "bbox": [
+            439,
+            61,
+            3184,
+            1207
+          ],
+          "confidence": 0.4437454342842102,
+          "segmentation_score": 0.931962788105011,
+          "roi_size": [
+            1145,
+            2725
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/94.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/94_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/94_mask.png",
+          "bbox": [
+            457,
+            98,
+            3217,
+            1245
+          ],
+          "confidence": 0.4738730490207672,
+          "segmentation_score": 0.9145824909210205,
+          "roi_size": [
+            1149,
+            2706
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/80.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/80_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/80_mask.png",
+          "bbox": [
+            421,
+            57,
+            3180,
+            1224
+          ],
+          "confidence": 0.45157819986343384,
+          "segmentation_score": 0.9691687226295471,
+          "roi_size": [
+            1171,
+            2718
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/5.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/5_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/5_mask.png",
+          "bbox": [
+            433,
+            144,
+            3202,
+            1297
+          ],
+          "confidence": 0.4274696409702301,
+          "segmentation_score": 0.9924915432929993,
+          "roi_size": [
+            1158,
+            2729
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/57.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/57_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/57_mask.png",
+          "bbox": [
+            458,
+            82,
+            3219,
+            1249
+          ],
+          "confidence": 0.49743226170539856,
+          "segmentation_score": 0.919532060623169,
+          "roi_size": [
+            1172,
+            2773
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/43.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/43_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/43_mask.png",
+          "bbox": [
+            439,
+            43,
+            3181,
+            1233
+          ],
+          "confidence": 0.4313057065010071,
+          "segmentation_score": 0.9834966659545898,
+          "roi_size": [
+            1196,
+            2757
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/55.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/55_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/55_mask.png",
+          "bbox": [
+            353,
+            39,
+            3870,
+            1243
+          ],
+          "confidence": 0.4423316419124603,
+          "segmentation_score": 0.9523389339447021,
+          "roi_size": [
+            1158,
+            3524
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/7.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/7_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/7_mask.png",
+          "bbox": [
+            446,
+            163,
+            3224,
+            1316
+          ],
+          "confidence": 0.4859463572502136,
+          "segmentation_score": 0.9918254613876343,
+          "roi_size": [
+            1163,
+            2802
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/41.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/41_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/41_mask.png",
+          "bbox": [
+            437,
+            86,
+            3194,
+            1238
+          ],
+          "confidence": 0.47126397490501404,
+          "segmentation_score": 0.9296211004257202,
+          "roi_size": [
+            1161,
+            2761
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/69.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/69_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/69_mask.png",
+          "bbox": [
+            486,
+            25,
+            3237,
+            1188
+          ],
+          "confidence": 0.43857359886169434,
+          "segmentation_score": 0.8305912613868713,
+          "roi_size": [
+            1188,
+            2831
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/96.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/96_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/96_mask.png",
+          "bbox": [
+            448,
+            79,
+            3202,
+            1230
+          ],
+          "confidence": 0.40193381905555725,
+          "segmentation_score": 0.950711190700531,
+          "roi_size": [
+            1162,
+            2747
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/82.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/82_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/82_mask.png",
+          "bbox": [
+            442,
+            106,
+            3223,
+            1270
+          ],
+          "confidence": 0.4552818536758423,
+          "segmentation_score": 0.9739262461662292,
+          "roi_size": [
+            1170,
+            2738
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/83.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/83_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/83_mask.png",
+          "bbox": [
+            478,
+            38,
+            3248,
+            1217
+          ],
+          "confidence": 0.49082738161087036,
+          "segmentation_score": 0.9714002013206482,
+          "roi_size": [
+            1189,
+            2748
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/97.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/97_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/97_mask.png",
+          "bbox": [
+            428,
+            47,
+            3192,
+            1199
+          ],
+          "confidence": 0.4129716157913208,
+          "segmentation_score": 0.9574248194694519,
+          "roi_size": [
+            1155,
+            2708
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/68.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/68_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/68_mask.png",
+          "bbox": [
+            501,
+            44,
+            3256,
+            1213
+          ],
+          "confidence": 0.3886431157588959,
+          "segmentation_score": 0.8568571209907532,
+          "roi_size": [
+            1186,
+            2788
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/40.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/40_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/40_mask.png",
+          "bbox": [
+            475,
+            79,
+            3246,
+            1251
+          ],
+          "confidence": 0.49889272451400757,
+          "segmentation_score": 0.9062126874923706,
+          "roi_size": [
+            1176,
+            2738
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/54.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/54_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/54_mask.png",
+          "bbox": [
+            391,
+            78,
+            3166,
+            1240
+          ],
+          "confidence": 0.3988253176212311,
+          "segmentation_score": 0.9684197902679443,
+          "roi_size": [
+            1167,
+            2800
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/6.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/6_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/6_mask.png",
+          "bbox": [
+            450,
+            89,
+            3229,
+            1255
+          ],
+          "confidence": 0.48231369256973267,
+          "segmentation_score": 0.9724574685096741,
+          "roi_size": [
+            1171,
+            2807
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/78.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/78_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/78_mask.png",
+          "bbox": [
+            427,
+            60,
+            3176,
+            1216
+          ],
+          "confidence": 0.4427834749221802,
+          "segmentation_score": 0.9559273719787598,
+          "roi_size": [
+            1157,
+            2737
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/2.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/2_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/2_mask.png",
+          "bbox": [
+            413,
+            129,
+            3189,
+            1288
+          ],
+          "confidence": 0.4394700527191162,
+          "segmentation_score": 0.9923000335693359,
+          "roi_size": [
+            1163,
+            2772
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/50.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/50_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/50_mask.png",
+          "bbox": [
+            425,
+            46,
+            3176,
+            1202
+          ],
+          "confidence": 0.4388916492462158,
+          "segmentation_score": 0.9523659944534302,
+          "roi_size": [
+            1160,
+            2757
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/44.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/44_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/44_mask.png",
+          "bbox": [
+            428,
+            31,
+            3173,
+            1196
+          ],
+          "confidence": 0.43903934955596924,
+          "segmentation_score": 0.957404613494873,
+          "roi_size": [
+            1173,
+            2717
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/93.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/93_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/93_mask.png",
+          "bbox": [
+            432,
+            30,
+            3876,
+            1223
+          ],
+          "confidence": 0.4054601490497589,
+          "segmentation_score": 0.837733805179596,
+          "roi_size": [
+            1152,
+            3456
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/87.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/87_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/87_mask.png",
+          "bbox": [
+            490,
+            47,
+            3242,
+            1221
+          ],
+          "confidence": 0.4100675582885742,
+          "segmentation_score": 0.8975633382797241,
+          "roi_size": [
+            1182,
+            2708
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/86.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/86_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/86_mask.png",
+          "bbox": [
+            482,
+            82,
+            3234,
+            1224
+          ],
+          "confidence": 0.46201542019844055,
+          "segmentation_score": 0.8628636598587036,
+          "roi_size": [
+            1146,
+            2708
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/92.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/92_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/92_mask.png",
+          "bbox": [
+            437,
+            71,
+            3212,
+            1231
+          ],
+          "confidence": 0.467410147190094,
+          "segmentation_score": 0.9405229687690735,
+          "roi_size": [
+            1165,
+            2756
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/45.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/45_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/45_mask.png",
+          "bbox": [
+            428,
+            66,
+            3192,
+            1231
+          ],
+          "confidence": 0.4544108510017395,
+          "segmentation_score": 0.9863085150718689,
+          "roi_size": [
+            1172,
+            2777
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/3.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/3_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/3_mask.png",
+          "bbox": [
+            418,
+            147,
+            3193,
+            1295
+          ],
+          "confidence": 0.44899386167526245,
+          "segmentation_score": 0.9872075915336609,
+          "roi_size": [
+            1156,
+            2799
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/51.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/51_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/51_mask.png",
+          "bbox": [
+            423,
+            72,
+            3191,
+            1230
+          ],
+          "confidence": 0.4310457110404968,
+          "segmentation_score": 0.9629632830619812,
+          "roi_size": [
+            1155,
+            2772
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/79.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/79_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/79_mask.png",
+          "bbox": [
+            442,
+            117,
+            3203,
+            1259
+          ],
+          "confidence": 0.41113385558128357,
+          "segmentation_score": 0.9601901173591614,
+          "roi_size": [
+            1146,
+            2769
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/47.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/47_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/47_mask.png",
+          "bbox": [
+            432,
+            100,
+            3180,
+            1250
+          ],
+          "confidence": 0.4855804443359375,
+          "segmentation_score": 0.9805539846420288,
+          "roi_size": [
+            1149,
+            2766
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/53.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/53_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/53_mask.png",
+          "bbox": [
+            385,
+            59,
+            3172,
+            1228
+          ],
+          "confidence": 0.39671918749809265,
+          "segmentation_score": 0.9859771728515625,
+          "roi_size": [
+            1174,
+            2797
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/1.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/1_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/1_mask.png",
+          "bbox": [
+            425,
+            89,
+            3205,
+            1252
+          ],
+          "confidence": 0.4489826261997223,
+          "segmentation_score": 0.9292402863502502,
+          "roi_size": [
+            1165,
+            2733
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/84.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/84_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/84_mask.png",
+          "bbox": [
+            479,
+            10,
+            3247,
+            1193
+          ],
+          "confidence": 0.45281147956848145,
+          "segmentation_score": 0.8330063223838806,
+          "roi_size": [
+            1193,
+            2843
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/90.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/90_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/90_mask.png",
+          "bbox": [
+            385,
+            20,
+            3877,
+            1242
+          ],
+          "confidence": 0.40477463603019714,
+          "segmentation_score": 0.8681000471115112,
+          "roi_size": [
+            1186,
+            3501
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/91.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/91_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/91_mask.png",
+          "bbox": [
+            454,
+            91,
+            3231,
+            1258
+          ],
+          "confidence": 0.46821844577789307,
+          "segmentation_score": 0.9938713312149048,
+          "roi_size": [
+            1171,
+            2791
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/85.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/85_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/85_mask.png",
+          "bbox": [
+            486,
+            56,
+            3247,
+            1222
+          ],
+          "confidence": 0.4390534460544586,
+          "segmentation_score": 0.8544448614120483,
+          "roi_size": [
+            1174,
+            2712
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/52.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/52_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/52_mask.png",
+          "bbox": [
+            453,
+            42,
+            3235,
+            1234
+          ],
+          "confidence": 0.42768123745918274,
+          "segmentation_score": 0.9583613872528076,
+          "roi_size": [
+            1202,
+            2805
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/training_images/46.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/roi_cache/46_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/segmentation_masks/46_mask.png",
+          "bbox": [
+            408,
+            46,
+            3171,
+            1212
+          ],
+          "confidence": 0.45243144035339355,
+          "segmentation_score": 0.9428611993789673,
+          "roi_size": [
+            1170,
+            2716
+          ]
+        }
+      ],
+      "failed_images": []
+    },
+    "defective_roi_result": {
+      "status": "success",
+      "total_images": 15,
+      "successful_extractions": 15,
+      "roi_data": [
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH2A5DLX00014KZ+A954P_M05_1_20250706050352_mask.png",
+          "bbox": [
+            194,
+            216,
+            3177,
+            1270
+          ],
+          "confidence": 0.5043888092041016,
+          "segmentation_score": 0.9942164421081543,
+          "roi_size": [
+            1058,
+            2962
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHHBA0UZS00014KZ+B951P_M05_1_20250706050846_mask.png",
+          "bbox": [
+            208,
+            275,
+            3245,
+            1339
+          ],
+          "confidence": 0.5378446578979492,
+          "segmentation_score": 0.9908650517463684,
+          "roi_size": [
+            1064,
+            3049
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH8AFLNC00014KZ+A951P_M05_1_20250706143507_mask.png",
+          "bbox": [
+            178,
+            211,
+            3162,
+            1258
+          ],
+          "confidence": 0.4405798316001892,
+          "segmentation_score": 0.9584108591079712,
+          "roi_size": [
+            1051,
+            2957
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH8AFGCN00014KZ+A953P_M05_1_20250706082820_mask.png",
+          "bbox": [
+            3207,
+            367,
+            3962,
+            1238
+          ],
+          "confidence": 0.48189496994018555,
+          "segmentation_score": 0.9670438170433044,
+          "roi_size": [
+            873,
+            755
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH7A1H8S00014L0+B94BP_M05_1_20250705175028_mask.png",
+          "bbox": [
+            424,
+            97,
+            3206,
+            1263
+          ],
+          "confidence": 0.5072153210639954,
+          "segmentation_score": 0.9946020841598511,
+          "roi_size": [
+            1169,
+            2748
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHHBA4BQ100014KZ+A952P_M05_1_20250706150120_mask.png",
+          "bbox": [
+            189,
+            398,
+            3192,
+            1469
+          ],
+          "confidence": 0.5174651145935059,
+          "segmentation_score": 0.9942580461502075,
+          "roi_size": [
+            1090,
+            3011
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH8A771D00014KZ+A958P_M05_1_20250706081429.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH8A771D00014KZ+A958P_M05_1_20250706081429_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH8A771D00014KZ+A958P_M05_1_20250706081429_mask.png",
+          "bbox": [
+            203,
+            265,
+            3198,
+            1316
+          ],
+          "confidence": 0.4262748956680298,
+          "segmentation_score": 0.9760448932647705,
+          "roi_size": [
+            1060,
+            2978
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH6A2RVD00014L0+B944P_M05_1_20250705180033_mask.png",
+          "bbox": [
+            374,
+            23,
+            3905,
+            1263
+          ],
+          "confidence": 0.4212929308414459,
+          "segmentation_score": 0.9404281973838806,
+          "roi_size": [
+            1197,
+            3538
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH2A4VHN00014KZ+A951P_M05_1_20250706050352_mask.png",
+          "bbox": [
+            212,
+            279,
+            3194,
+            1294
+          ],
+          "confidence": 0.4129737913608551,
+          "segmentation_score": 0.9911491870880127,
+          "roi_size": [
+            1029,
+            2991
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH8AF4RB00014KZ+A952P_M05_1_20250705184051_mask.png",
+          "bbox": [
+            176,
+            54,
+            3171,
+            1221
+          ],
+          "confidence": 0.39118415117263794,
+          "segmentation_score": 0.830765426158905,
+          "roi_size": [
+            1175,
+            2969
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH6A0EP900014KZ+A958P_M05_1_20250706050423_mask.png",
+          "bbox": [
+            179,
+            236,
+            3157,
+            1274
+          ],
+          "confidence": 0.4480893909931183,
+          "segmentation_score": 0.9783671498298645,
+          "roi_size": [
+            1053,
+            2967
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH6A2S7X00014L0+B94AP_M05_1_20250705180033_mask.png",
+          "bbox": [
+            357,
+            52,
+            3137,
+            1214
+          ],
+          "confidence": 0.37162408232688904,
+          "segmentation_score": 0.9914302229881287,
+          "roi_size": [
+            1164,
+            2765
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH8A703Q00014KZ+A95BP_M05_1_20250705222621_mask.png",
+          "bbox": [
+            162,
+            242,
+            3181,
+            1306
+          ],
+          "confidence": 0.4816478490829468,
+          "segmentation_score": 0.9944739937782288,
+          "roi_size": [
+            1071,
+            3039
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH8A7J5600014KZ+A951P_M05_1_20250706055252_mask.png",
+          "bbox": [
+            123,
+            201,
+            3125,
+            1280
+          ],
+          "confidence": 0.4141542911529541,
+          "segmentation_score": 0.9965147972106934,
+          "roi_size": [
+            1084,
+            3016
+          ]
+        },
+        {
+          "status": "success",
+          "image_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_images/KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841.jpg",
+          "roi_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_roi_cache/KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841_roi.jpg",
+          "mask_path": "ml/auto_annotation/projects/GM_v8_0eb191f1/defective_segmentation_masks/KJCHH9A4U0Q00014KZ+A959P_M05_1_20250706045841_mask.png",
+          "bbox": [
+            213,
+            101,
+            3195,
+            1172
+          ],
+          "confidence": 0.48385289311408997,
+          "segmentation_score": 0.7514889240264893,
+          "roi_size": [
+            1085,
+            2990
+          ]
+        }
+      ],
+      "failed_images": []
+    },
+    "total_images": 115,
+    "successful_extractions": 0,
+    "failed_extractions": 0,
+    "message": "ROI extraction completed using segmentation_mask"
+  },
+  "training_images_count": 100,
+  "defective_images_count": 15
+}
