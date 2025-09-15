@@ -1,6 +1,9 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Form
 from fastapi.responses import FileResponse, JSONResponse
-from backend.services.yolo_service import yolo_service
+try:
+    from backend.services.ml.yolo_service import yolo_service
+except ImportError:
+    from services.ml.yolo_service import yolo_service
 import os
 import json
 from typing import List

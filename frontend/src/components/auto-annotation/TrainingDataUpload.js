@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './TrainingDataUpload.css';
 
-function TrainingDataUpload({ projectId, projectType, onDataUploaded }) {
+function TrainingDataUpload({ projectId, projectType, onDataUploaded, uploadType = "training" }) {
   const [uploadState, setUploadState] = useState({
     images: [],
     annotations: [],
@@ -83,9 +83,41 @@ function TrainingDataUpload({ projectId, projectType, onDataUploaded }) {
       // Add format
       formData.append('annotation_format', 'auto');
 
-      const response = await fetch(`/api/auto-annotation/projects/${projectId}/upload-training-data`, {
+      // Determine the endpoint based on uploadType
+      const endpointMap = {
+        'training': 'upload-training-data',
+        'defective': 'upload-defective-data', 
+        'test': 'upload-test-data'
+      };
+      
+      // Adjust FormData field names based on uploadType
+      const fieldNameMap = {
+        'training': 'training_images',
+        'defective': 'defective_images',
+        'test': 'test_images'
+      };
+
+      // Re-create FormData with correct field names
+      const correctedFormData = new FormData();
+      
+      // Add images with correct field name
+      uploadState.images.forEach((file, index) => {
+        correctedFormData.append(fieldNameMap[uploadType], file);
+      });
+      
+      // Add annotations if present
+      if (uploadState.annotations.length > 0) {
+        uploadState.annotations.forEach((file, index) => {
+          correctedFormData.append('annotation_files', file);
+        });
+      }
+      
+      // Add format
+      correctedFormData.append('annotation_format', 'auto');
+
+      const response = await fetch(`/api/projects/${projectId}/${endpointMap[uploadType]}`, {
         method: 'POST',
-        body: formData
+        body: correctedFormData
       });
 
       const result = await response.json();

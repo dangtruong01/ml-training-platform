@@ -18,8 +18,8 @@ class GroundingDINOSAM2Service:
         os.makedirs(self.results_dir, exist_ok=True)
         
         # Import services
-        from backend.services.grounding_dino_service import grounding_dino_service
-        from backend.services.sam2_service import sam2_service
+        from services.annotation.grounding_dino_service import grounding_dino_service
+        from services.annotation.sam2_service import sam2_service
         
         self.grounding_dino = grounding_dino_service
         self.sam2 = sam2_service

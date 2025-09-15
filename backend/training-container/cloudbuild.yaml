@@ -1,0 +1,25 @@
+# Google Cloud Build configuration
+# This builds the container directly in the cloud without local Docker
+steps:
+  # Build the training container
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build', 
+      '-t', 'gcr.io/$PROJECT_ID/ml-training:latest',
+      '-f', 'Dockerfile',
+      '.'
+    ]
+    dir: '.'
+    
+  # Push to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/ml-training:latest']
+
+# Store the built image
+images:
+  - 'gcr.io/$PROJECT_ID/ml-training:latest'
+
+# Build options
+options:
+  machineType: 'E2_HIGHCPU_8'  # Use faster build machine
+  logging: CLOUD_LOGGING_ONLY

@@ -1,0 +1,33 @@
+# Faster, lighter training container for development/testing
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies (lighter)
+RUN apt-get update && apt-get install -y \
+    git \
+    wget \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+
+# Install only CPU versions for faster building
+RUN pip install --no-cache-dir \
+    torch torchvision --index-url https://download.pytorch.org/whl/cpu \
+    && pip install --no-cache-dir -r requirements.txt
+
+# Copy training code
+COPY training/ ./training/
+COPY scripts/ ./scripts/
+
+# Make scripts executable
+RUN chmod +x scripts/*.sh
+
+# Set Python path
+ENV PYTHONPATH=/app:$PYTHONPATH
+
+# Entry point
+ENTRYPOINT ["python", "training/main.py"]

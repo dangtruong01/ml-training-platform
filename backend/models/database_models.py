@@ -119,3 +119,43 @@ class Annotation(Base):
     # Relationships
     project = relationship("Project", back_populates="annotations")
     processing_job = relationship("ProcessingJob", back_populates="annotations")
+
+
+class TrainingJob(Base):
+    """Track ML model training jobs and their results"""
+    __tablename__ = 'training_jobs'
+    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    task_id = Column(String(255), unique=True, nullable=False)  # e.g., 'anomaly_training_abc123'
+    project_id = Column(String(255), ForeignKey('projects.project_id', ondelete='CASCADE'))
+    
+    # Training configuration
+    model_type = Column(String(50), nullable=False)  # 'anomaly', 'detection', 'segmentation'
+    algorithm = Column(String(100))  # specific algorithm: 'isolation_forest', 'yolo_v8', etc.
+    training_config = Column(JSONB)  # epochs, batch_size, learning_rate, etc.
+    
+    # Status tracking
+    status = Column(String(50), default='pending')  # 'pending', 'running', 'completed', 'failed'
+    progress = Column(Float, default=0.0)
+    current_epoch = Column(Integer, default=0)
+    total_epochs = Column(Integer)
+    
+    # Timing
+    started_at = Column(TIMESTAMP)
+    completed_at = Column(TIMESTAMP)
+    duration_seconds = Column(Integer)
+    
+    # Results and files
+    results_dir = Column(Text)  # Path to results directory
+    model_files_info = Column(JSONB)  # List of model files with metadata
+    training_metrics = Column(JSONB)  # Loss, accuracy, etc.
+    training_logs = Column(JSONB)  # Array of log messages
+    
+    # Error handling
+    error_message = Column(Text)
+    
+    created_at = Column(TIMESTAMP, server_default=func.current_timestamp())
+    updated_at = Column(TIMESTAMP, server_default=func.current_timestamp(), onupdate=func.current_timestamp())
+    
+    # Relationships
+    project = relationship("Project")

@@ -32,7 +32,11 @@ class LLMCLIPAnomalyService:
         self._llm_client = None
         
         # Import services
-        from backend.services.grounding_dino_service import grounding_dino_service
+        try:
+            from backend.services.annotation.grounding_dino_service import grounding_dino_service
+        except ImportError:
+            from services.annotation.grounding_dino_service import grounding_dino_service
+        
         self.grounding_dino = grounding_dino_service
         
         # Local LLM pipeline (will be loaded on demand)

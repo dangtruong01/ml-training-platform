@@ -6,8 +6,12 @@ import base64
 from typing import List, Dict
 from pathlib import Path
 
-from .grounding_dino_service import grounding_dino_service
-from .sam2_service import sam2_service
+try:
+    from backend.services.annotation.grounding_dino_service import grounding_dino_service
+    from backend.services.annotation.sam2_service import sam2_service
+except ImportError:
+    from services.annotation.grounding_dino_service import grounding_dino_service
+    from services.annotation.sam2_service import sam2_service
 
 class DefectDetectionService:
     def __init__(self):

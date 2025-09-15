@@ -41,7 +41,7 @@ function ProjectCreation({ onProjectCreated, onCancel }) {
       formDataToSend.append('project_type', formData.projectType);
       formDataToSend.append('description', formData.description);
 
-      const response = await fetch('/api/auto-annotation/create-project', {
+      const response = await fetch('/api/projects/create', {
         method: 'POST',
         body: formDataToSend
       });

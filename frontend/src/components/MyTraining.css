@@ -1,0 +1,584 @@
+/* MyTraining Component Styles */
+.my-training-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.my-training-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.my-training-header h1 {
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.my-training-header p {
+  color: #7f8c8d;
+  font-size: 16px;
+}
+
+/* Training Steps Layout */
+.training-steps-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.step-section {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.step-section.full-width {
+  grid-column: 1 / -1;
+}
+
+.step-section:hover {
+  border-color: #007bff;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+.step-number {
+  background: #007bff;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.step-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 18px;
+}
+
+/* Project Selection */
+.project-dropdown {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  background: white;
+}
+
+.project-dropdown:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.project-card {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.project-card h4 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+}
+
+.project-type-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.project-type-badge.object_detection {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.project-type-badge.segmentation {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.project-type-badge.anomaly_detection {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.project-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-stats .stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.project-stats .label {
+  color: #6c757d;
+}
+
+.project-stats .value {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+/* Dataset Validation */
+.validation-status {
+  margin-bottom: 16px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.validation-status.ready .status-indicator {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.validation-status.not-ready .status-indicator {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.status-icon {
+  font-size: 20px;
+}
+
+.requirements-box,
+.recommendations-box {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.requirements-box h5,
+.recommendations-box h5 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+
+.requirements-box ul,
+.recommendations-box ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.validation-loading,
+.validation-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Training Configuration */
+.config-horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.config-group {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.config-group label {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* Radio Groups */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  font-weight: 500;
+}
+
+.radio-option:hover {
+  border-color: #007bff;
+  background: #f8f9ff;
+}
+
+.radio-option input[type="radio"] {
+  margin: 0;
+}
+
+.radio-option input[type="radio"]:checked + span,
+.radio-option:has(input[type="radio"]:checked) {
+  color: #007bff;
+}
+
+.radio-option:has(input[type="radio"]:checked) {
+  border-color: #007bff;
+  background: #e3f2fd;
+}
+
+/* Parameters Grid */
+.params-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.param-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.param-item label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #495057;
+}
+
+.param-item input {
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.param-item input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.start-training-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.start-training-btn:hover:not(:disabled) {
+  background: #218838;
+  transform: translateY(-2px);
+}
+
+.start-training-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.stop-training-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.stop-training-btn:hover {
+  background: #c82333;
+}
+
+/* Message */
+.message {
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.message.info {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+.message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Training Monitor */
+.training-monitor {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 30px;
+}
+
+.training-monitor h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Progress Bar */
+.progress-section {
+  margin: 15px 0;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #28a745, #20c997);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    transparent 75%
+  );
+  background-size: 20px 20px;
+  animation: progress-stripe 1s linear infinite;
+}
+
+@keyframes progress-stripe {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 0;
+  }
+}
+
+/* Training History */
+.training-history {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 30px;
+}
+
+.training-history h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Algorithm Selection */
+.algorithm-select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 12px;
+  background: white;
+}
+
+.algorithm-select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.algorithm-info {
+  margin-top: 8px;
+}
+
+.info-text {
+  font-size: 14px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Horizontal Configuration Layout */
+.horizontal-config-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.half-width {
+  flex: 1;
+}
+
+.radio-group.horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.radio-group.horizontal .radio-option {
+  flex: 0 1 auto;
+  min-width: fit-content;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .training-steps-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .config-horizontal {
+    gap: 20px;
+  }
+  
+  .horizontal-config-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .radio-group {
+    flex-direction: column;
+  }
+  
+  .radio-group.horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .params-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+}
+
+/* Algorithm Display Styles */
+.algorithm-display {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+}
+
+.algorithm-badge {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.algorithm-note {
+  color: #666;
+  font-style: italic;
+}
+
+.algorithm-note small {
+  color: #28a745;
+}
+
+.algorithm-placeholder {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px dashed #ccc;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}

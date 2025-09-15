@@ -154,6 +154,54 @@ class GoogleCloudStorageService(BaseStorageService):
             print(f"❌ Error deleting file from GCS {file_path}: {e}")
             return False
 
+    async def delete_folder(self, folder_path: str) -> bool:
+        """Delete entire folder and all its contents from Google Cloud Storage"""
+        await self._get_client()
+        
+        try:
+            # Get the folder prefix
+            folder_prefix = self._get_blob_path(folder_path)
+            if not folder_prefix.endswith('/'):
+                folder_prefix += '/'
+            
+            print(f"🔍 Looking for files with prefix: {folder_prefix}")
+            
+            # List all blobs with this prefix (including subdirectories)
+            blobs = list(self._bucket.list_blobs(prefix=folder_prefix))
+            
+            if not blobs:
+                print(f"📁 No files found in folder: {folder_path}")
+                return True
+            
+            print(f"🗑️ Found {len(blobs)} items to delete from folder: {folder_path}")
+            
+            # Log what we're about to delete for debugging
+            for blob in blobs[:5]:  # Show first 5 items
+                print(f"   📄 {blob.name}")
+            if len(blobs) > 5:
+                print(f"   ... and {len(blobs) - 5} more items")
+            
+            # Delete all blobs in batches
+            deleted_count = 0
+            failed_count = 0
+            for blob in blobs:
+                try:
+                    await asyncio.get_event_loop().run_in_executor(None, blob.delete)
+                    deleted_count += 1
+                except Exception as e:
+                    print(f"⚠️ Failed to delete blob {blob.name}: {e}")
+                    failed_count += 1
+            
+            print(f"✅ Successfully deleted {deleted_count}/{len(blobs)} items from {folder_path}")
+            if failed_count > 0:
+                print(f"⚠️ Failed to delete {failed_count} items")
+            
+            return deleted_count > 0
+            
+        except Exception as e:
+            print(f"❌ Error deleting folder from GCS {folder_path}: {e}")
+            return False
+
     async def create_directory(self, directory_path: str) -> bool:
         """Create directory marker in Google Cloud Storage"""
         # GCS doesn't have true directories, but we can create a marker file

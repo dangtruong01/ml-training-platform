@@ -112,6 +112,24 @@ class LocalStorageService(BaseStorageService):
             print(f"❌ Error deleting file {full_path}: {e}")
             return False
 
+    async def delete_folder(self, folder_path: str) -> bool:
+        """Delete entire folder and all its contents from local filesystem"""
+        import shutil
+        
+        full_path = os.path.join(self.base_path, folder_path)
+        
+        try:
+            if os.path.exists(full_path):
+                shutil.rmtree(full_path)
+                print(f"✅ Successfully deleted folder: {folder_path}")
+                return True
+            else:
+                print(f"📁 Folder not found: {folder_path}")
+                return True  # Consider it successful if folder doesn't exist
+        except Exception as e:
+            print(f"❌ Error deleting folder {full_path}: {e}")
+            return False
+
     async def create_directory(self, directory_path: str) -> bool:
         """Create directory in local filesystem"""
         full_path = os.path.join(self.base_path, directory_path)

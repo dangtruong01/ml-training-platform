@@ -46,6 +46,11 @@ class BaseStorageService(ABC):
         pass
 
     @abstractmethod
+    async def delete_folder(self, folder_path: str) -> bool:
+        """Delete entire folder and all its contents from storage"""
+        pass
+
+    @abstractmethod
     async def create_directory(self, directory_path: str) -> bool:
         """Create directory (if applicable for storage type)"""
         pass

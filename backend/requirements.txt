@@ -28,6 +28,11 @@ google-auth>=2.17.0
 
 # Additional cloud dependencies
 google-cloud-core>=2.3.0
+google-cloud-aiplatform>=1.35.0
+
+# Database dependencies
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0
 
 # Environment and configuration
 python-dotenv>=1.0.0

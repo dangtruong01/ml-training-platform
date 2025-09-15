@@ -16,7 +16,7 @@ class ROIExtractionService:
     
     def __init__(self):
         # Import existing GroundingDINO service
-        from backend.services.grounding_dino_service import grounding_dino_service
+        from services.annotation.grounding_dino_service import grounding_dino_service
         self.grounding_dino = grounding_dino_service
         
         # Base directory for auto annotation projects

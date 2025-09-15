@@ -378,9 +378,9 @@
   100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
 }
 
-.step-content {
+/* .step-content {
   max-width: 200px;
-}
+} */
 
 .step-title {
   margin: 0 0 5px 0;

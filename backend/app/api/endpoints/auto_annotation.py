@@ -8,9 +8,14 @@ import numpy as np
 import base64
 import uuid
 
-from backend.services.auto_annotation_service import auto_annotation_service
-from backend.services.storage import storage_service
-from backend.services.database_service import database_service
+try:
+    from backend.services.annotation.auto_annotation_service import auto_annotation_service
+    from backend.services.storage import storage_service
+    from backend.services.core.database_service import database_service
+except ImportError:
+    from services.annotation.auto_annotation_service import auto_annotation_service
+    from services.storage import storage_service
+    from services.core.database_service import database_service
 
 router = APIRouter()
 
@@ -165,9 +170,21 @@ async def get_project_details(project_id: str):
 async def delete_project(project_id: str):
     """Delete a project and all its associated data"""
     try:
+        # First delete from database
         result = database_service.delete_project(project_id)
         
         if result['status'] == 'success':
+            # Also delete the project folder from Cloud Storage
+            project_folder_path = f"projects/{project_id}"
+            storage_deleted = await storage_service.delete_folder(project_folder_path)
+            
+            if storage_deleted:
+                result['message'] += " (including Cloud Storage data)"
+                result['storage_cleanup'] = True
+            else:
+                result['message'] += " (Cloud Storage cleanup failed)"
+                result['storage_cleanup'] = False
+            
             return JSONResponse(result)
         else:
             raise HTTPException(status_code=404, detail=result['message'])
@@ -212,9 +229,8 @@ async def upload_training_data(
             # Upload to storage
             storage_path = f"auto_annotation/projects/{project_id}/training_images/{image_file.filename}"
             storage_result = await storage_service.upload_file(
-                content=content,
-                filename=image_file.filename,
-                storage_path=storage_path,
+                file_data=content,
+                file_path=storage_path,
                 content_type="image/jpeg"
             )
             
@@ -246,9 +262,8 @@ async def upload_training_data(
                 # Upload to storage
                 storage_path = f"auto_annotation/projects/{project_id}/annotation_files/{annotation_file.filename}"
                 storage_result = await storage_service.upload_file(
-                    content=content,
-                    filename=annotation_file.filename,
-                    storage_path=storage_path,
+                    file_data=content,
+                    file_path=storage_path,
                     content_type="application/json" if annotation_file.filename.endswith('.json') else "text/plain"
                 )
                 

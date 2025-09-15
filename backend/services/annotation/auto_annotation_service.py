@@ -42,11 +42,11 @@ class AutoAnnotationService:
             os.makedirs(dir_path, exist_ok=True)
         
         # Import existing services
-        from backend.services.grounding_dino_service import grounding_dino_service
+        from services.annotation.grounding_dino_service import grounding_dino_service
         self.grounding_dino = grounding_dino_service
         
         # Import new ROI extraction service for anomaly detection workflow
-        from backend.services.roi_extraction_service import roi_extraction_service
+        from services.annotation.roi_extraction_service import roi_extraction_service
         self.roi_extractor = roi_extraction_service
         
         print("🏗️ Auto-annotation service initialized")

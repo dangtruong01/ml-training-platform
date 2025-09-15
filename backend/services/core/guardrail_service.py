@@ -1,8 +1,12 @@
 import os
 import cv2
 import numpy as np
-from .anomaly_service import anomaly_service
-from .grounding_dino_service import grounding_dino_service
+try:
+    from backend.services.ml.anomaly_service import anomaly_service
+    from backend.services.annotation.grounding_dino_service import grounding_dino_service
+except ImportError:
+    from services.ml.anomaly_service import anomaly_service
+    from services.annotation.grounding_dino_service import grounding_dino_service
 
 class GuardrailService:
     def __init__(self):

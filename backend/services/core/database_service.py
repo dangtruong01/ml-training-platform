@@ -11,9 +11,9 @@ from sqlalchemy.exc import SQLAlchemyError
 from dotenv import load_dotenv
 
 try:
-    from backend.models.database_models import Base, Project, UploadedFile, ProcessingJob, Annotation
+    from backend.models.database_models import Base, Project, UploadedFile, ProcessingJob, Annotation, TrainingJob
 except ImportError:
-    from models.database_models import Base, Project, UploadedFile, ProcessingJob, Annotation
+    from models.database_models import Base, Project, UploadedFile, ProcessingJob, Annotation, TrainingJob
 
 load_dotenv()
 
@@ -88,14 +88,20 @@ class DatabaseService:
             project = session.query(Project).filter(Project.project_id == project_id).first()
             
             if project:
-                # Get file counts
-                file_counts = {}
-                for file_type in ['training_images', 'defective_images', 'annotation_files']:
-                    count = session.query(UploadedFile).filter(
-                        UploadedFile.project_id == project_id,
-                        UploadedFile.file_type == file_type
-                    ).count()
-                    file_counts[file_type] = count
+                # Get file counts efficiently with single query
+                from sqlalchemy import func
+                file_counts = {'training_images': 0, 'defective_images': 0, 'annotation_files': 0}
+                
+                count_results = session.query(
+                    UploadedFile.file_type, 
+                    func.count(UploadedFile.id)
+                ).filter(
+                    UploadedFile.project_id == project_id
+                ).group_by(UploadedFile.file_type).all()
+                
+                for file_type, count in count_results:
+                    if file_type in file_counts:
+                        file_counts[file_type] = count
                 
                 # Get latest processing status
                 latest_jobs = {}
@@ -155,18 +161,25 @@ class DatabaseService:
             
             project_list = []
             for project in projects:
-                # Get file counts
-                file_counts = {}
-                for file_type in ['training_images', 'defective_images']:
-                    count = session.query(UploadedFile).filter(
-                        UploadedFile.project_id == project.project_id,
-                        UploadedFile.file_type == file_type
-                    ).count()
-                    file_counts[file_type] = count
+                # Get file counts efficiently with single query
+                from sqlalchemy import func
+                file_counts = {'training_images': 0, 'defective_images': 0}
+                
+                count_results = session.query(
+                    UploadedFile.file_type, 
+                    func.count(UploadedFile.id)
+                ).filter(
+                    UploadedFile.project_id == project.project_id
+                ).group_by(UploadedFile.file_type).all()
+                
+                for file_type, count in count_results:
+                    if file_type in file_counts:
+                        file_counts[file_type] = count
                 
                 project_list.append({
                     'project_id': project.project_id,
                     'project_name': project.project_name,
+                    'project_type': project.project_type,
                     'owner': project.owner,
                     'status': project.status,
                     'created_at': project.created_at.isoformat(),
@@ -355,6 +368,261 @@ class DatabaseService:
             session.rollback()
             print(f"❌ Error completing processing job: {e}")
             return False
+        finally:
+            session.close()
+    
+    # =============================================================================
+    # TRAINING JOBS MANAGEMENT
+    # =============================================================================
+    
+    def create_training_job(
+        self, 
+        task_id: str, 
+        project_id: str, 
+        model_type: str, 
+        algorithm: str,
+        training_config: dict,
+        total_epochs: int = None
+    ) -> Dict[str, Any]:
+        """Create a new training job record"""
+        session = self.get_session()
+        try:
+            training_job = TrainingJob(
+                task_id=task_id,
+                project_id=project_id,
+                model_type=model_type,
+                algorithm=algorithm,
+                training_config=training_config,
+                total_epochs=total_epochs,
+                status='pending',
+                started_at=datetime.utcnow()
+            )
+            
+            session.add(training_job)
+            session.commit()
+            
+            return {
+                'status': 'success',
+                'message': f'Training job {task_id} created successfully',
+                'job_id': training_job.id,
+                'task_id': task_id
+            }
+            
+        except SQLAlchemyError as e:
+            session.rollback()
+            print(f"❌ Error creating training job: {e}")
+            return {'status': 'error', 'message': str(e)}
+        finally:
+            session.close()
+    
+    def update_training_job_status(
+        self,
+        task_id: str,
+        status: str = None,
+        progress: float = None,
+        current_epoch: int = None,
+        training_logs: list = None,
+        error_message: str = None
+    ) -> Dict[str, Any]:
+        """Update training job status and progress"""
+        session = self.get_session()
+        try:
+            training_job = session.query(TrainingJob).filter(TrainingJob.task_id == task_id).first()
+            
+            if training_job:
+                if status:
+                    training_job.status = status
+                if progress is not None:
+                    training_job.progress = progress
+                if current_epoch is not None:
+                    training_job.current_epoch = current_epoch
+                if training_logs is not None:
+                    training_job.training_logs = training_logs
+                if error_message:
+                    training_job.error_message = error_message
+                
+                # Update completion time if completed
+                if status == 'completed':
+                    training_job.completed_at = datetime.utcnow()
+                    if training_job.started_at:
+                        duration = training_job.completed_at - training_job.started_at
+                        training_job.duration_seconds = int(duration.total_seconds())
+                
+                training_job.updated_at = datetime.utcnow()
+                session.commit()
+                
+                return {'status': 'success', 'message': f'Training job {task_id} updated'}
+            else:
+                return {'status': 'error', 'message': f'Training job {task_id} not found'}
+                
+        except SQLAlchemyError as e:
+            session.rollback()
+            print(f"❌ Error updating training job: {e}")
+            return {'status': 'error', 'message': str(e)}
+        finally:
+            session.close()
+    
+    def complete_training_job(
+        self,
+        task_id: str,
+        results_dir: str,
+        model_files_info: list,
+        training_metrics: dict = None
+    ) -> Dict[str, Any]:
+        """Mark training job as completed with results"""
+        session = self.get_session()
+        try:
+            training_job = session.query(TrainingJob).filter(TrainingJob.task_id == task_id).first()
+            
+            if training_job:
+                training_job.status = 'completed'
+                training_job.progress = 100.0
+                training_job.results_dir = results_dir
+                training_job.model_files_info = model_files_info
+                training_job.training_metrics = training_metrics or {}
+                training_job.completed_at = datetime.utcnow()
+                
+                if training_job.started_at:
+                    duration = training_job.completed_at - training_job.started_at
+                    training_job.duration_seconds = int(duration.total_seconds())
+                
+                session.commit()
+                
+                return {'status': 'success', 'message': f'Training job {task_id} completed'}
+            else:
+                return {'status': 'error', 'message': f'Training job {task_id} not found'}
+                
+        except SQLAlchemyError as e:
+            session.rollback()
+            print(f"❌ Error completing training job: {e}")
+            return {'status': 'error', 'message': str(e)}
+        finally:
+            session.close()
+    
+    def get_training_job(self, task_id: str) -> Dict[str, Any]:
+        """Get training job details"""
+        session = self.get_session()
+        try:
+            training_job = session.query(TrainingJob).filter(TrainingJob.task_id == task_id).first()
+            
+            if training_job:
+                return {
+                    'status': 'success',
+                    'training_job': {
+                        'id': training_job.id,
+                        'task_id': training_job.task_id,
+                        'project_id': training_job.project_id,
+                        'model_type': training_job.model_type,
+                        'algorithm': training_job.algorithm,
+                        'training_config': training_job.training_config,
+                        'status': training_job.status,
+                        'progress': training_job.progress,
+                        'current_epoch': training_job.current_epoch,
+                        'total_epochs': training_job.total_epochs,
+                        'started_at': training_job.started_at.isoformat() if training_job.started_at else None,
+                        'completed_at': training_job.completed_at.isoformat() if training_job.completed_at else None,
+                        'duration_seconds': training_job.duration_seconds,
+                        'results_dir': training_job.results_dir,
+                        'model_files_info': training_job.model_files_info,
+                        'training_metrics': training_job.training_metrics,
+                        'training_logs': training_job.training_logs,
+                        'error_message': training_job.error_message,
+                        'created_at': training_job.created_at.isoformat(),
+                        'updated_at': training_job.updated_at.isoformat()
+                    }
+                }
+            else:
+                return {'status': 'error', 'message': f'Training job {task_id} not found'}
+                
+        except SQLAlchemyError as e:
+            print(f"❌ Error getting training job: {e}")
+            return {'status': 'error', 'message': str(e)}
+        finally:
+            session.close()
+    
+    def list_training_jobs(self, project_id: str = None, status: str = None) -> Dict[str, Any]:
+        """List training jobs with optional filters"""
+        session = self.get_session()
+        try:
+            query = session.query(TrainingJob)
+            
+            if project_id:
+                query = query.filter(TrainingJob.project_id == project_id)
+            if status:
+                query = query.filter(TrainingJob.status == status)
+            
+            training_jobs = query.order_by(desc(TrainingJob.updated_at)).all()
+            
+            jobs_list = []
+            for job in training_jobs:
+                jobs_list.append({
+                    'id': job.id,
+                    'task_id': job.task_id,
+                    'project_id': job.project_id,
+                    'model_type': job.model_type,
+                    'algorithm': job.algorithm,
+                    'status': job.status,
+                    'progress': job.progress,
+                    'current_epoch': job.current_epoch,
+                    'total_epochs': job.total_epochs,
+                    'started_at': job.started_at.isoformat() if job.started_at else None,
+                    'completed_at': job.completed_at.isoformat() if job.completed_at else None,
+                    'duration_seconds': job.duration_seconds,
+                    'model_files_info': job.model_files_info,
+                    'training_config': job.training_config,  # Include training_config with Vertex AI job ID
+                    'created_at': job.created_at.isoformat(),
+                    'updated_at': job.updated_at.isoformat()
+                })
+            
+            return {
+                'status': 'success',
+                'training_jobs': jobs_list,
+                'total_jobs': len(jobs_list)
+            }
+            
+        except SQLAlchemyError as e:
+            print(f"❌ Error listing training jobs: {e}")
+            return {'status': 'error', 'message': str(e)}
+        finally:
+            session.close()
+
+    def delete_training_job(self, task_id: str) -> Dict[str, Any]:
+        """Delete a training job from the database"""
+        session = self.get_session()
+        try:
+            # Find the training job
+            training_job = session.query(TrainingJob).filter(TrainingJob.task_id == task_id).first()
+            
+            if not training_job:
+                return {'status': 'error', 'message': f'Training job {task_id} not found'}
+            
+            print(f"🗑️ Deleting training job: {task_id}")
+            print(f"   - Project: {training_job.project_id}")
+            print(f"   - Model Type: {training_job.model_type}")  
+            print(f"   - Status: {training_job.status}")
+            print(f"   - Created: {training_job.created_at}")
+            
+            # Delete the training job
+            session.delete(training_job)
+            session.commit()
+            
+            print(f"✅ Successfully deleted training job {task_id} from database")
+            
+            return {
+                'status': 'success',
+                'message': f'Training job {task_id} deleted successfully',
+                'deleted_job': {
+                    'task_id': task_id,
+                    'project_id': training_job.project_id,
+                    'model_type': training_job.model_type,
+                    'status': training_job.status
+                }
+            }
+            
+        except SQLAlchemyError as e:
+            session.rollback()
+            print(f"❌ Error deleting training job {task_id}: {e}")
+            return {'status': 'error', 'message': str(e)}
         finally:
             session.close()
 

@@ -1,14 +1,32 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Form
 from fastapi.responses import FileResponse, JSONResponse
-from backend.services.yolo_service import yolo_service
-from backend.services.defect_detection_service import defect_detection_service
 try:
-    from backend.services.guardrail_service import guardrail_service
+    from backend.services.ml.yolo_service import yolo_service
 except ImportError:
-    guardrail_service = None
-from backend.services.grounding_dino_service import grounding_dino_service
-from backend.services.grounding_dino_sam2_service import grounding_dino_sam2_service
-from backend.services.llm_clip_anomaly_service import llm_clip_anomaly_service
+    from services.ml.yolo_service import yolo_service
+try:
+    from backend.services.ml.defect_detection_service import defect_detection_service
+except ImportError:
+    from services.ml.defect_detection_service import defect_detection_service
+try:
+    from backend.services.core.guardrail_service import guardrail_service
+except ImportError:
+    try:
+        from services.core.guardrail_service import guardrail_service
+    except ImportError:
+        guardrail_service = None
+try:
+    from backend.services.annotation.grounding_dino_service import grounding_dino_service
+except ImportError:
+    from services.annotation.grounding_dino_service import grounding_dino_service
+try:
+    from backend.services.annotation.grounding_dino_sam2_service import grounding_dino_sam2_service
+except ImportError:
+    from services.annotation.grounding_dino_sam2_service import grounding_dino_sam2_service
+try:
+    from backend.services.ml.llm_clip_anomaly_service import llm_clip_anomaly_service
+except ImportError:
+    from services.ml.llm_clip_anomaly_service import llm_clip_anomaly_service
 import os
 import traceback
 import subprocess
