@@ -1,0 +1,8 @@
+names:
+- dent
+- dirt
+- scratch
+nc: 3
+path: /Users/truonghaidang/Desktop/open-trainer/backend/yolo_cvat_ODv2_9ddd8dad_f4c880fd
+train: images/train
+val: images/val

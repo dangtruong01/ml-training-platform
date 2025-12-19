@@ -3,10 +3,17 @@ import torch
 import numpy as np
 from PIL import Image
 from typing import List
-from anomalib.models import Patchcore
-from anomalib.post_processing import PostProcessor
-from lightning import Trainer
-from anomalib.data import Folder
+
+# Temporarily disable anomalib imports to prevent server crashes
+try:
+    from anomalib.models import Patchcore
+    from anomalib.post_processing import PostProcessor
+    from lightning import Trainer
+    from anomalib.data import Folder
+    ANOMALIB_AVAILABLE = True
+except ImportError:
+    ANOMALIB_AVAILABLE = False
+    print("⚠️ anomalib not available - advanced anomaly models disabled")
 
 class AnomalyService:
     def __init__(self):

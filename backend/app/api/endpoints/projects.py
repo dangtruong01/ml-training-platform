@@ -4,6 +4,7 @@ from typing import List, Optional, Dict
 import os
 import json
 import uuid
+import yaml
 from datetime import datetime
 
 try:
@@ -564,6 +565,32 @@ async def validate_dataset(project_id: str):
         test_images = file_counts.get('test_images', 0)
         annotation_files = file_counts.get('annotation_files', 0)
         
+        # FALLBACK: If annotation_files is 0 but we have training images, 
+        # do a direct database check to see if annotation files actually exist
+        if annotation_files == 0 and training_images > 0:
+            try:
+                from backend.services.core.database_service import UploadedFile, DatabaseService
+                from sqlalchemy import func
+                
+                db_service = DatabaseService()
+                session = db_service.get_session()
+                
+                try:
+                    # Check if there are actually annotation files in the database
+                    annotation_count = session.query(func.count(UploadedFile.id)).filter(
+                        UploadedFile.project_id == project_id,
+                        UploadedFile.file_type == 'annotation_files'
+                    ).scalar()
+                    
+                    if annotation_count > 0:
+                        print(f"⚠️ Found {annotation_count} annotation files in database but file_counts shows 0. Using database count.")
+                        annotation_files = annotation_count
+                        
+                finally:
+                    session.close()
+            except Exception as e:
+                print(f"⚠️ Failed to check database for annotation files: {e}")
+        
         # Validation rules by project type
         validation_result = {
             'project_id': project_id,
@@ -596,26 +623,26 @@ async def validate_dataset(project_id: str):
         elif project_type == 'object_detection':
             # Object detection requires training images + YOLO annotations
             validation_result['requirements_met'] = {
-                'training_images': training_images >= 20,  # Minimum 20 images
+                'training_images': training_images >= 10,  # Minimum 10 images (consistent with error message)
                 'annotation_files': annotation_files >= 1   # At least 1 annotation file
             }
-            
-            if training_images < 20:
+
+            if training_images < 10:
                 validation_result['missing_requirements'].append(
-                    f"Need at least 20 training images. Currently: {training_images}"
+                    f"Need at least 10 training images. Currently: {training_images}"
                 )
-            
+
             if annotation_files < 1:
                 validation_result['missing_requirements'].append(
                     f"Need YOLO format annotation files. Currently: {annotation_files}"
                 )
-            
+
             if test_images == 0:
                 validation_result['recommendations'].append(
                     "Consider uploading test images for validation"
                 )
-                
-            validation_result['is_ready'] = training_images >= 20 and annotation_files >= 1
+
+            validation_result['is_ready'] = training_images >= 10 and annotation_files >= 1
             
         elif project_type == 'segmentation':
             # Segmentation requires training images + COCO/mask annotations
@@ -772,3 +799,695 @@ async def get_project_directories(project_id: str) -> Dict[str, str]:
     directories.update(annotation_dirs)
     
     return directories
+
+@router.post("/{project_id}/upload-zip-dataset")
+async def upload_zip_dataset(
+    project_id: str,
+    dataset_zip: UploadFile = File(...)
+):
+    """
+    Upload a complete YOLO dataset as ZIP file
+    
+    Expected ZIP structure:
+    dataset.zip
+    ├── images/
+    │   ├── train/
+    │   └── val/
+    ├── labels/
+    │   ├── train/
+    │   └── val/
+    └── data.yaml
+    """
+    try:
+        # Check if project exists
+        project_result = database_service.get_project(project_id)
+        if project_result['status'] != 'success':
+            raise HTTPException(status_code=404, detail="Project not found")
+        
+        project_data = project_result['project']
+        project_type = project_data['project_type']
+        
+        # Process the ZIP file directly to count files
+        import tempfile
+        import zipfile
+        from pathlib import Path
+        import os
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            zip_path = temp_path / "dataset.zip"
+
+            # Save uploaded ZIP file
+            with open(zip_path, 'wb') as f:
+                content = await dataset_zip.read()
+                f.write(content)
+
+            # Extract and count files
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(temp_path)
+
+            # Count image files in train/val directories
+            train_images = 0
+            val_images = 0
+            total_labels = 0
+            classes = []
+
+            # Look for standard YOLO structure
+            for root, dirs, files in os.walk(temp_path):
+                root_path = Path(root)
+
+                # Count images
+                image_files = [f for f in files if f.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp'))]
+
+                if 'train' in root_path.name.lower():
+                    train_images += len(image_files)
+                elif 'val' in root_path.name.lower() or 'test' in root_path.name.lower():
+                    val_images += len(image_files)
+
+                # Count labels
+                label_files = [f for f in files if f.lower().endswith('.txt') and f != 'classes.txt']
+                total_labels += len(label_files)
+
+                # Read classes.txt if found
+                if 'classes.txt' in files:
+                    with open(root_path / 'classes.txt', 'r') as f:
+                        classes = [line.strip() for line in f if line.strip()]
+
+            # Create dataset info
+            dataset_info = {
+                'total_images': train_images + val_images,
+                'train_images': train_images,
+                'val_images': val_images,
+                'total_labels': total_labels,
+                'classes': classes,
+                'dataset_path': f"projects/{project_id}"
+            }
+
+            # CRITICAL: Actually upload the extracted files to GCS
+            # Get project directory structure
+            dirs = await get_project_directories(project_id)
+            
+            # Ensure project directories exist in GCS
+            await storage_service.create_directory(dirs['project'])
+            await storage_service.create_directory(f"{dirs['project']}/images")
+            await storage_service.create_directory(f"{dirs['project']}/images/train")
+            await storage_service.create_directory(f"{dirs['project']}/images/val")
+            await storage_service.create_directory(f"{dirs['project']}/labels")
+            await storage_service.create_directory(f"{dirs['project']}/labels/train")
+            await storage_service.create_directory(f"{dirs['project']}/labels/val")
+            
+            # Upload all extracted files to GCS
+            uploaded_files = []
+            print(f"🔍 [DEBUG] Starting to process extracted files from {temp_path}")
+            
+            for root, dirs_in_path, files in os.walk(temp_path):
+                root_path = Path(root)
+                relative_path = root_path.relative_to(temp_path)
+                print(f"🔍 [DEBUG] Processing directory: {root_path} (relative: {relative_path})")
+                print(f"🔍 [DEBUG] Found {len(files)} files in this directory: {files}")
+                    
+                for file in files:
+                    # Skip ZIP files
+                    if file.endswith('.zip'):
+                        print(f"⏭️ [DEBUG] Skipping ZIP file: {file}")
+                        continue
+                        
+                    file_path = root_path / file
+                    relative_file_path = relative_path / file
+                    
+                    print(f"🔍 [DEBUG] Processing file: {file_path}")
+                    print(f"🔍 [DEBUG] Relative file path: {relative_file_path}")
+                    
+                    # Check if file exists and get size
+                    if not file_path.exists():
+                        print(f"❌ [DEBUG] File does not exist: {file_path}")
+                        continue
+                        
+                    file_size = file_path.stat().st_size
+                    print(f"🔍 [DEBUG] File size on disk: {file_size} bytes")
+                    
+                    # Read file content
+                    with open(file_path, 'rb') as f:
+                        content = f.read()
+                    
+                    print(f"🔍 [DEBUG] Read {len(content)} bytes from file")
+                    
+                    # Determine content type
+                    if file.lower().endswith(('.jpg', '.jpeg', '.png', '.bmp')):
+                        content_type = "image/jpeg"
+                        file_type = 'training_images'
+                    elif file.lower().endswith('.txt'):
+                        content_type = "text/plain"
+                        file_type = 'annotations'
+                    elif file.lower().endswith('.yaml') or file.lower().endswith('.yml'):
+                        content_type = "text/yaml"
+                        file_type = 'config'
+                    else:
+                        content_type = "application/octet-stream"
+                        file_type = 'other'
+                    
+                    # Upload to storage with proper GCS path structure
+                    storage_path = f"projects/{project_id}/{relative_file_path}"
+                    
+                    # Debug logging
+                    print(f"🔍 [DEBUG] Uploading file: {file}")
+                    print(f"🔍 [DEBUG] Storage path: {storage_path}")
+                    print(f"🔍 [DEBUG] Content size: {len(content)} bytes")
+                    print(f"🔍 [DEBUG] Content type: {content_type}")
+                    
+                    try:
+                        storage_url = await storage_service.upload_file(
+                            file_data=content,
+                            file_path=storage_path,
+                            content_type=content_type
+                        )
+                        print(f"✅ [DEBUG] Upload successful: {storage_url}")
+                    except Exception as upload_error:
+                        print(f"❌ [DEBUG] Upload failed: {upload_error}")
+                        print(f"❌ [DEBUG] Traceback: {str(upload_error)}")
+                        # Re-raise the error so we can see what's wrong
+                        raise upload_error
+                    
+                    # Track file in database
+                    db_result = database_service.add_uploaded_file(
+                        project_id=project_id,
+                        file_type=file_type,
+                        filename=file,
+                        original_filename=file,
+                        storage_url=storage_url,
+                        storage_path=storage_path,
+                        file_size_bytes=len(content),
+                        content_type=content_type
+                    )
+                    
+                    uploaded_files.append({
+                        'filename': file,
+                        'type': file_type,
+                        'storage_url': storage_url,
+                        'relative_path': str(relative_file_path),
+                        'tracked': db_result['status'] == 'success'
+                    })
+
+            # CRITICAL: Create a proper data.yaml file for cloud training
+            # The original data.yaml contains local paths which won't work in cloud
+            print(f"🔧 [DEBUG] Creating proper data.yaml for cloud training")
+            print(f"🔧 [DEBUG] Classes found: {classes}")
+            
+            # Ensure we have classes - if empty, try to read from classes.txt in the extracted files
+            if not classes:
+                print(f"⚠️ [DEBUG] No classes found, searching for classes.txt in extracted files")
+                for root, dirs_in_path, files in os.walk(temp_path):
+                    if 'classes.txt' in files:
+                        classes_file_path = Path(root) / 'classes.txt'
+                        print(f"🔍 [DEBUG] Found classes.txt at: {classes_file_path}")
+                        with open(classes_file_path, 'r') as f:
+                            classes = [line.strip() for line in f if line.strip()]
+                        print(f"✅ [DEBUG] Loaded classes from classes.txt: {classes}")
+                        break
+            
+            # If still no classes, check if there's an existing data.yaml with classes
+            if not classes:
+                print(f"⚠️ [DEBUG] Still no classes found, checking existing data.yaml files")
+                for root, dirs_in_path, files in os.walk(temp_path):
+                    for file in files:
+                        if file.lower() in ['data.yaml', 'data.yml']:
+                            yaml_file_path = Path(root) / file
+                            print(f"🔍 [DEBUG] Found existing data.yaml at: {yaml_file_path}")
+                            try:
+                                with open(yaml_file_path, 'r') as f:
+                                    existing_data = yaml.safe_load(f)
+                                if 'names' in existing_data and existing_data['names']:
+                                    classes = existing_data['names']
+                                    if isinstance(classes, dict):
+                                        # Convert dict format {0: 'class1', 1: 'class2'} to list
+                                        classes = [classes[i] for i in sorted(classes.keys())]
+                                    print(f"✅ [DEBUG] Loaded classes from existing data.yaml: {classes}")
+                                    break
+                            except Exception as e:
+                                print(f"❌ [DEBUG] Failed to read existing data.yaml: {e}")
+                    if classes:
+                        break
+            
+            # Final validation - we must have classes
+            if not classes:
+                raise Exception("No classes found in dataset. Please ensure your dataset includes either classes.txt or a valid data.yaml with class definitions.")
+            
+            # Format classes for YAML output (as a list)
+            classes_yaml = '\n'.join([f'  - {cls}' for cls in classes])
+            
+            # Create the correct data.yaml content for cloud environment
+            data_yaml_content = f"""# YOLO dataset configuration for project {project_id}
+# Generated automatically - do not edit manually
+
+# Dataset paths (relative to this file)
+path: .  # Dataset root directory
+train: images/train  # Training images directory
+val: images/val      # Validation images directory
+
+# Classes
+nc: {len(classes)}  # Number of classes
+names:
+{classes_yaml}
+"""
+            
+            # Upload the corrected data.yaml file
+            try:
+                corrected_yaml_storage_path = f"projects/{project_id}/data.yaml"
+                corrected_yaml_url = await storage_service.upload_file(
+                    file_data=data_yaml_content.encode('utf-8'),
+                    file_path=corrected_yaml_storage_path,
+                    content_type="text/yaml"
+                )
+                
+                # Track the corrected data.yaml in database
+                db_result = database_service.add_uploaded_file(
+                    project_id=project_id,
+                    file_type='config',
+                    filename='data.yaml',
+                    original_filename='data.yaml',
+                    storage_url=corrected_yaml_url,
+                    storage_path=corrected_yaml_storage_path,
+                    file_size_bytes=len(data_yaml_content.encode('utf-8')),
+                    content_type="text/yaml"
+                )
+                
+                uploaded_files.append({
+                    'filename': 'data.yaml',
+                    'type': 'config',
+                    'storage_url': corrected_yaml_url,
+                    'relative_path': 'data.yaml',
+                    'tracked': db_result['status'] == 'success'
+                })
+                
+                print(f"✅ [DEBUG] Created corrected data.yaml for cloud training")
+                print(f"🔍 [DEBUG] New data.yaml content:")
+                print(data_yaml_content)
+                
+            except Exception as yaml_error:
+                print(f"❌ [DEBUG] Failed to create corrected data.yaml: {yaml_error}")
+
+        # Create database records with actual file counts
+        file_counts = {
+            'total_images': dataset_info.get('total_images', 0),
+            'train_images': dataset_info.get('train_images', 0),
+            'val_images': dataset_info.get('val_images', 0),
+            'total_labels': dataset_info.get('total_labels', 0),
+            'classes': dataset_info.get('classes', []),
+            'dataset_path': dataset_info.get('dataset_path', ''),
+            'uploaded_files_count': len(uploaded_files)
+        }
+
+        # Update database with proper file counts
+        database_service.update_project_file_counts(project_id, file_counts)
+
+        return JSONResponse({
+            'status': 'success',
+            'message': 'ZIP dataset uploaded and processed successfully',
+            'dataset_info': dataset_info,
+            'total_images': dataset_info.get('total_images', 0),
+            'total_labels': dataset_info.get('total_labels', 0),
+            'classes': dataset_info.get('classes', []),
+            'train_images': dataset_info.get('train_images', 0),
+            'val_images': dataset_info.get('val_images', 0),
+            'uploaded_files_count': len(uploaded_files),
+            'uploaded_files': uploaded_files[:10]  # Show first 10 files for verification
+        })
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to process ZIP dataset: {str(e)}")
+
+@router.post("/{project_id}/upload-raw-annotations")
+async def upload_raw_annotations(
+    project_id: str,
+    raw_files: List[UploadFile] = File(...)
+):
+    """
+    Upload raw annotation folder with images/, labels/, and classes.txt
+    
+    Expected files:
+    - images/ (all your images)
+    - labels/ (YOLO format .txt files)
+    - classes.txt (class names, one per line)
+    
+    The system will automatically organize into YOLO format with train/val split
+    """
+    try:
+        # Check if project exists
+        project_result = database_service.get_project(project_id)
+        if project_result['status'] != 'success':
+            raise HTTPException(status_code=404, detail="Project not found")
+        
+        project_data = project_result['project']
+        
+        # Create temporary directory to save uploaded files
+        import tempfile
+        import os
+        import shutil
+        
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Save uploaded files to temporary directory
+            raw_folder_path = os.path.join(temp_dir, "raw_annotations")
+            os.makedirs(raw_folder_path, exist_ok=True)
+            
+            # Organize files by their path structure
+            for file in raw_files:
+                file_content = await file.read()
+                
+                # Extract directory structure from filename (browsers send full paths)
+                file_path = file.filename
+                if '/' in file_path:
+                    # Extract relative path
+                    rel_path = file_path
+                    if rel_path.startswith('/'):
+                        rel_path = rel_path[1:]
+                    
+                    # Create directory structure
+                    full_path = os.path.join(raw_folder_path, rel_path)
+                    os.makedirs(os.path.dirname(full_path), exist_ok=True)
+                    
+                    # Save file
+                    with open(full_path, 'wb') as f:
+                        f.write(file_content)
+                else:
+                    # File in root
+                    with open(os.path.join(raw_folder_path, file.filename), 'wb') as f:
+                        f.write(file_content)
+            
+            # Use the raw annotation processor to convert to YOLO format
+            from services.ml.yolo_service import yolo_service
+            
+            output_name = f"project_{project_id}_{int(datetime.now().timestamp())}"
+            result = yolo_service.process_raw_annotations(
+                raw_folder_path=raw_folder_path,
+                output_name=output_name,
+                train_split=0.8,
+                val_split=0.2
+            )
+            
+            if result['status'] != 'success':
+                raise HTTPException(status_code=400, detail=result.get('message', 'Failed to process raw annotations'))
+            
+            # Update database with file counts
+            file_counts = {
+                'train_images': result['train_samples'],
+                'val_images': result['val_samples'],
+                'total_images': result['total_samples'],
+                'total_labels': result['total_samples'],  # Assume 1 label per image
+                'classes': result['classes'],
+                'dataset_path': result['output_path']
+            }
+
+            database_service.update_project_file_counts(project_id, file_counts)
+            
+            return JSONResponse({
+                'status': 'success',
+                'message': 'Raw annotations processed successfully',
+                'output_path': result['output_path'],
+                'data_yaml_path': result['data_yaml_path'],
+                'classes': result['classes'],
+                'train_samples': result['train_samples'],
+                'val_samples': result['val_samples'],
+                'total_samples': result['total_samples']
+            })
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to process raw annotations: {str(e)}")
+
+@router.post("/{project_id}/upload-cvat-dataset")
+async def upload_cvat_dataset(
+    project_id: str,
+    cvat_zip: UploadFile = File(...)
+):
+    """
+    Upload CVAT-exported ZIP file and convert to YOLO format
+
+    Expected CVAT ZIP structure:
+    - images/ (annotated images)
+    - labels/ (YOLO format labels)
+    - classes.txt (class definitions)
+    - notes.json (CVAT metadata, optional)
+    """
+    try:
+        # Check if project exists
+        project_result = database_service.get_project(project_id)
+        if project_result['status'] != 'success':
+            raise HTTPException(status_code=404, detail="Project not found")
+
+        if not cvat_zip:
+            raise HTTPException(status_code=400, detail="No ZIP file uploaded")
+
+        # Validate ZIP file
+        if not cvat_zip.filename.lower().endswith('.zip'):
+            raise HTTPException(status_code=400, detail="File must be a ZIP archive")
+
+        # Create temporary directory for processing
+        import tempfile
+        import shutil
+        import zipfile
+        from pathlib import Path
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
+            zip_path = temp_path / "cvat_dataset.zip"
+            cvat_folder = temp_path / "cvat_export"
+
+            # Save uploaded ZIP file
+            with open(zip_path, 'wb') as f:
+                content = await cvat_zip.read()
+                f.write(content)
+
+            # Extract ZIP file
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(cvat_folder)
+
+            # Find the actual dataset folder (might be nested)
+            # Look for the folder containing images/, labels/, classes.txt
+            dataset_folder = None
+            for root, dirs, files in os.walk(cvat_folder):
+                root_path = Path(root)
+                if (root_path / 'images').exists() and (root_path / 'labels').exists() and (root_path / 'classes.txt').exists():
+                    dataset_folder = root_path
+                    break
+
+            if not dataset_folder:
+                raise HTTPException(status_code=400, detail="Invalid CVAT dataset structure. Expected: images/, labels/, classes.txt")
+
+            # Convert CVAT to YOLO format using our utility
+            import sys
+            import importlib.util
+
+            # Import the conversion utility
+            # Get the project root directory (where the script is located)
+            current_dir = os.getcwd()
+            # If we're in the backend directory, go up to the project root
+            if current_dir.endswith('/backend'):
+                project_root = os.path.dirname(current_dir)
+            else:
+                project_root = current_dir
+
+            convert_script_path = os.path.join(project_root, 'convert_cvat_to_yolo.py')
+            if os.path.exists(convert_script_path):
+                spec = importlib.util.spec_from_file_location("convert_cvat_to_yolo", convert_script_path)
+                convert_module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(convert_module)
+
+                # Convert CVAT to YOLO
+                yolo_output_name = f"cvat_{project_id}_{uuid.uuid4().hex[:8]}"
+                result = convert_module.convert_cvat_to_yolo(
+                    str(dataset_folder),
+                    yolo_output_name,
+                    train_ratio=0.8
+                )
+
+                # Move converted dataset to proper location
+                yolo_dataset_path = Path(result['output_dir'])
+                project_datasets_dir = Path(f"ml/datasets/{project_id}")
+                project_datasets_dir.mkdir(parents=True, exist_ok=True)
+
+                final_dataset_path = project_datasets_dir / yolo_output_name
+                if final_dataset_path.exists():
+                    shutil.rmtree(final_dataset_path)
+                shutil.move(str(yolo_dataset_path), str(final_dataset_path))
+
+                # Update database with file counts
+                file_counts = {
+                    'train_images': result['train_images'],
+                    'val_images': result['val_images'],
+                    'total_images': result['total_images'],
+                    'total_labels': result.get('total_labels', result['train_images'] + result['val_images']),  # Assume 1 label per image
+                    'classes': result['classes'],
+                    'dataset_path': str(final_dataset_path)
+                }
+
+                database_service.update_project_file_counts(project_id, file_counts)
+
+                return JSONResponse({
+                    'status': 'success',
+                    'message': 'CVAT dataset converted and uploaded successfully',
+                    'output_path': str(final_dataset_path),
+                    'data_yaml_path': str(final_dataset_path / 'data.yaml'),
+                    'classes': result['classes'],
+                    'train_images': result['train_images'],
+                    'val_images': result['val_images'],
+                    'total_images': result['total_images']
+                })
+            else:
+                raise HTTPException(status_code=500, detail="CVAT conversion utility not found")
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to process CVAT dataset: {str(e)}")
+
+@router.get("/{project_id}/dataset-statistics")
+async def get_dataset_statistics(project_id: str):
+    """
+    Get detailed statistics about a project's dataset
+    """
+    try:
+        # Check if project exists
+        project_result = database_service.get_project(project_id)
+        if project_result['status'] != 'success':
+            raise HTTPException(status_code=404, detail="Project not found")
+        
+        project_data = project_result['project']
+        
+        # Try to get dataset statistics if available
+        from services.ml.yolo_service import yolo_service
+        
+        # This would check if the project has a processed dataset
+        # For now, return basic file counts from database
+        file_counts = project_data.get('file_counts', {})
+        
+        statistics = {
+            'project_id': project_id,
+            'project_type': project_data['project_type'],
+            'file_counts': file_counts,
+            'training_ready': (file_counts.get('training_images', 0) > 0),
+            'has_annotations': (file_counts.get('annotation_files', 0) > 0),
+            'last_updated': project_data.get('updated_at', project_data.get('created_at'))
+        }
+        
+        return JSONResponse({
+            'status': 'success',
+            'statistics': statistics
+        })
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get dataset statistics: {str(e)}")
+
+@router.get("/{project_id}/debug-file-counts")
+async def debug_project_file_counts(project_id: str):
+    """
+    Debug endpoint to check actual file counts in database vs what validation sees
+    """
+    try:
+        # Check if project exists
+        project_result = database_service.get_project(project_id)
+        if project_result['status'] != 'success':
+            raise HTTPException(status_code=404, detail="Project not found")
+        
+        project_data = project_result['project']
+        
+        # Get raw database records
+        from backend.services.core.database_service import UploadedFile, DatabaseService
+        
+        db_service = DatabaseService()
+        session = db_service.get_session()
+        
+        debug_info = {
+            'project_id': project_id,
+            'project_name': project_data['project_name'],
+            'project_type': project_data['project_type'],
+            'file_counts_from_get_project': project_data.get('file_counts', {}),
+            'raw_database_records': [],
+            'file_type_counts': {}
+        }
+        
+        try:
+            files = session.query(UploadedFile).filter(
+                UploadedFile.project_id == project_id
+            ).all()
+            
+            for file in files:
+                debug_info['raw_database_records'].append({
+                    'filename': file.filename,
+                    'file_type': file.file_type,
+                    'storage_path': file.storage_path,
+                    'is_processed': file.is_processed
+                })
+                
+                if file.file_type not in debug_info['file_type_counts']:
+                    debug_info['file_type_counts'][file.file_type] = 0
+                debug_info['file_type_counts'][file.file_type] += 1
+                
+        finally:
+            session.close()
+        
+        return JSONResponse({
+            'status': 'success',
+            'debug_info': debug_info
+        })
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to debug file counts: {str(e)}")
+
+@router.post("/{project_id}/refresh-file-counts")
+async def refresh_project_file_counts(project_id: str):
+    """
+    Refresh/recalculate file counts for a project by scanning actual database records
+    """
+    try:
+        # Check if project exists
+        project_result = database_service.get_project(project_id)
+        if project_result['status'] != 'success':
+            raise HTTPException(status_code=404, detail="Project not found")
+        
+        from backend.services.core.database_service import UploadedFile, DatabaseService
+        from sqlalchemy import func
+        
+        db_service = DatabaseService()
+        session = db_service.get_session()
+        
+        try:
+            # Count actual files in database
+            count_results = session.query(
+                UploadedFile.file_type, 
+                func.count(UploadedFile.id)
+            ).filter(
+                UploadedFile.project_id == project_id
+            ).group_by(UploadedFile.file_type).all()
+            
+            file_counts = {
+                'training_images': 0,
+                'defective_images': 0, 
+                'test_images': 0,
+                'annotation_files': 0
+            }
+            
+            for file_type, count in count_results:
+                if file_type in file_counts:
+                    file_counts[file_type] = count
+            
+            # If we have annotation files, create a fake update to trigger the validation fix
+            if file_counts['annotation_files'] > 0:
+                # Create a minimal file_counts dict for update_project_file_counts
+                update_data = {
+                    'total_labels': file_counts['annotation_files'],
+                    'train_images': file_counts['training_images'],
+                    'val_images': file_counts.get('defective_images', 0),
+                    'total_images': file_counts['training_images'] + file_counts.get('defective_images', 0)
+                }
+                
+                # This will ensure annotation records exist
+                database_service.update_project_file_counts(project_id, update_data)
+            
+            return JSONResponse({
+                'status': 'success',
+                'message': 'File counts refreshed successfully',
+                'file_counts': file_counts
+            })
+            
+        finally:
+            session.close()
+            
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to refresh file counts: {str(e)}")

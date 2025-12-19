@@ -5,7 +5,7 @@ import os
 import json
 import uuid
 from datetime import datetime
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 from google.cloud import aiplatform
 from google.cloud.aiplatform import CustomJob
 
@@ -84,16 +84,22 @@ class VertexAIService:
             # Upload training code to Cloud Storage with model type organization
             print("📤 Uploading training code...")
             code_gs_path = training_code_manager.upload_training_code(task_id, model_type)
-            
-            # Add project_id to training config for the startup script
+
+            # Get dataset path from GCS where it's already stored by storage_service
+            print("📂 Locating project dataset in GCS...")
+            dataset_gs_path = self._get_project_dataset_gcs_path(project_id)
+
+            # Add project_id and dataset path to training config for the startup script
             training_config_with_project = training_config.copy()
             training_config_with_project['project_id'] = project_id
+            training_config_with_project['dataset_gs_path'] = dataset_gs_path
             
             # Generate startup script
             startup_script = training_code_manager.get_startup_script(
                 code_gs_path=code_gs_path,
                 task_id=task_id,
-                training_config=training_config_with_project
+                training_config=training_config_with_project,
+                model_type=model_type
             )
             
             # Select machine and GPU configuration
@@ -114,7 +120,7 @@ class VertexAIService:
                             "env": [
                                 {"name": "AIP_MODEL_DIR", "value": f"{self.staging_bucket}/{self._get_model_type_folder(model_type)}/{task_id}"},
                                 {"name": "PYTHONPATH", "value": "/tmp"},
-                                {"name": "BACKEND_URL", "value": os.getenv('PUBLIC_BACKEND_URL', 'http://localhost:8000')}  # Set PUBLIC_BACKEND_URL for cloud deployment
+                                {"name": "BACKEND_URL", "value": os.getenv('PUBLIC_BACKEND_URL', 'http://localhost:8000')}
                             ]
                         },
                     }
@@ -231,6 +237,28 @@ class VertexAIService:
                 'message': f'Failed to get job status: {str(e)}'
             }
     
+    def _get_project_dataset_gcs_path(self, project_id: str) -> str:
+        """Get the GCS path where project datasets are stored by storage_service"""
+        try:
+            import os
+
+            # The storage service stores project data in GCS under auto_annotation/projects/{project_id}/
+            # Dataset files are in auto_annotation/projects/{project_id}/training_images/
+            main_bucket = os.getenv('GCS_BUCKET_NAME', 'dangtruong-mltraining-storage')
+
+            # Dataset path where storage_service uploads training data
+            dataset_gs_path = f"gs://{main_bucket}/auto_annotation/projects/{project_id}/"
+
+            print(f"📂 Dataset located at: {dataset_gs_path}")
+            print(f"🔍 Note: Vertex AI trainer will search for images in training_images/ subdirectory")
+
+            return dataset_gs_path
+
+        except Exception as e:
+            print(f"❌ Error getting dataset GCS path: {e}")
+            # Fallback to auto_annotation path structure
+            return f"gs://dangtruong-mltraining-storage/auto_annotation/projects/{project_id}/"
+
     def _get_machine_config(self, training_config: Dict[str, Any]) -> tuple:
         """Get machine and accelerator configuration based on training config"""
         device = training_config.get('device', 'cpu').lower()

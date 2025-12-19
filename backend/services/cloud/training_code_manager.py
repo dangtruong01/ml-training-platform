@@ -103,7 +103,7 @@ class TrainingCodeManager:
         print(f"📦 Created code archive: {zip_path}")
         return zip_path
     
-    def get_startup_script(self, code_gs_path: str, task_id: str, training_config: Dict[str, Any]) -> str:
+    def get_startup_script(self, code_gs_path: str, task_id: str, training_config: Dict[str, Any], model_type: str = 'anomaly') -> str:
         """
         Generate startup script that downloads and runs the training code.
         
@@ -135,9 +135,6 @@ nvidia-smi || echo "⚠️ nvidia-smi not available"
 lscpu | head -10 || echo "⚠️ lscpu not available"
 cat /proc/meminfo | head -5 || echo "⚠️ /proc/meminfo not available"
 
-# Install additional requirements
-pip install scikit-learn google-cloud-storage google-cloud-logging psycopg2-binary python-dotenv requests ultralytics opencv-python-headless
-
 # Download training code
 echo "📥 Downloading training code from {code_gs_path}"
 gsutil cp {code_gs_path} /tmp/training_code.zip
@@ -147,6 +144,16 @@ cd /tmp
 unzip training_code.zip
 chmod +x *.py
 
+# Install requirements from requirements.txt to ensure compatible versions
+if [ -f requirements.txt ]; then
+    echo "📦 Installing packages from requirements.txt..."
+    pip install -r requirements.txt
+else
+    echo "⚠️ No requirements.txt found, installing individual packages..."
+    # Install additional requirements with compatible versions
+    pip install "numpy<2.0" "scikit-learn>=1.3.0,<1.6.0" "pandas>=1.5.0,<2.1.0" google-cloud-storage google-cloud-logging psycopg2-binary python-dotenv requests "ultralytics>=8.0.0" opencv-python-headless
+fi
+
 echo "🎯 Starting training..."
 
 # Run the training script
@@ -154,7 +161,8 @@ python main.py \\
     --model-dir=$AIP_MODEL_DIR \\
     --task-id={task_id} \\
     --project-id={training_config.get('project_id', '')} \\
-    --model-type=anomaly \\
+    --model-type={model_type} \\
+    --dataset-path="{training_config.get('dataset_gs_path', '')}" \\
     --config-json='{config_json}' \\
     --database-host={database_host} \\
     --database-user={database_user} \\

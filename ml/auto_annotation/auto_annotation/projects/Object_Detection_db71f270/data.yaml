@@ -1,0 +1,8 @@
+# YOLO Dataset Configuration
+path: /Users/truonghaidang/Desktop/open-trainer/ml/auto_annotation/auto_annotation/projects/Object_Detection_db71f270
+train: images/train
+val: images/val
+
+# Classes (you'll need to update this based on your actual classes)
+nc: 1  # number of classes
+names: ['defect']  # class names

@@ -24,8 +24,8 @@
 
 /* Progress bar styling */
 .progress-section {
-  margin: 15px 0;
-  padding: 10px 0;
+  margin: 8px 0;
+  padding: 6px 0;
   border-top: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -34,16 +34,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
-  font-size: 0.85rem;
+  margin-bottom: 4px;
+  font-size: 0.75rem;
   color: #6b7280;
 }
 
 .progress-bar {
   width: 100%;
-  height: 8px;
+  height: 4px;
   background-color: #e5e7eb;
-  border-radius: 4px;
+  border-radius: 2px;
   overflow: hidden;
 }
 
@@ -113,14 +113,14 @@
 .info-item .value.algorithm-badge {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 0.65rem;
   font-weight: 600;
   text-align: center;
   max-width: none;
   white-space: nowrap;
-  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+  box-shadow: 0 1px 3px rgba(102, 126, 234, 0.2);
 }
 
 /* Action buttons */
@@ -212,52 +212,55 @@
 
 .models-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  overflow: visible;
 }
 
 .model-card {
   background: #f9fafb;
-  border: 2px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
+  overflow: visible;
 }
 
 .model-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-color: #3b82f6;
 }
 
 .model-card.selected {
   border-color: #3b82f6;
   background: #eff6ff;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
 }
 
 .model-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 .model-header h3 {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.0rem;
   color: #111827;
   font-weight: 600;
   flex: 1;
+  line-height: 1.2;
 }
 
 .model-type-badge {
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
   white-space: nowrap;
 }
 
@@ -279,32 +282,32 @@
 .model-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 .info-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .info-item .label {
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   color: #6b7280;
   font-weight: 500;
 }
 
 .info-item .value {
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   color: #374151;
   font-weight: 600;
 }
 
 .status-badge {
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.025em;
@@ -332,21 +335,21 @@
 
 .model-actions {
   display: flex;
-  gap: 10px;
+  gap: 6px;
   justify-content: flex-end;
 }
 
 .action-btn {
-  padding: 8px 16px;
+  padding: 6px 12px;
   border: none;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
 .action-btn.secondary {
@@ -611,4 +614,144 @@
   .model-content {
     grid-template-columns: 2fr 1fr;
   }
+}
+
+/* Download Dropdown Styles */
+.download-dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+}
+
+.model-actions {
+  position: relative;
+  z-index: 5;
+}
+
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dropdown-trigger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Portal-based dropdown menu */
+.dropdown-menu-portal {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: dropdown-appear 0.2s ease;
+  min-width: 240px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  overflow: visible;
+  animation: dropdown-appear 0.2s ease;
+  min-width: 240px;
+  margin-top: 4px;
+}
+
+@keyframes dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-option {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: white;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.dropdown-option:hover {
+  background: #f8fafc;
+}
+
+.dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.option-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.option-icon {
+  font-size: 16px;
+}
+
+.option-label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 12px;
+}
+
+.option-description {
+  font-size: 10px;
+  color: #6b7280;
+  line-height: 1.3;
+  margin-left: 20px;
+}
+
+/* Special styling for different download types */
+.dropdown-option[data-format="all"] .option-header {
+  color: #059669;
+}
+
+.dropdown-option[data-format="onnx"] .option-header {
+  color: #dc2626;
+}
+
+.dropdown-option[data-format="pytorch"] .option-header {
+  color: #7c3aed;
+}
+
+/* Alternative dropdown positioning for cards near bottom */
+.download-dropdown.flip-up .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+/* Ensure parent containers don't clip */
+.models-section {
+  overflow: visible;
+}
+
+.model-content {
+  overflow: visible;
+}
+
+.my-model-container {
+  overflow: visible;
 }

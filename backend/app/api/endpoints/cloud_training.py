@@ -33,11 +33,14 @@ async def train_project_cloud(
         project_result = database_service.get_project(project_id)
         if project_result['status'] != 'success':
             raise HTTPException(status_code=404, detail="Project not found")
-        
+
+        project = project_result['project']
+        project_type = project.get('project_type', 'anomaly_detection')
+
         # Respect user device choice - if they select GPU/MPS, use cloud training
         device_lower = device.lower()
         should_use_gpu = device_lower == 'cuda' or device_lower == 'mps' or epochs > 50 or model_size in ['l', 'x']
-        
+
         # Prepare training configuration
         training_config = {
             'algorithm': algorithm,
@@ -47,9 +50,16 @@ async def train_project_cloud(
             'learning_rate': learning_rate,
             'model_size': model_size
         }
-        
-        # Start cloud training
-        task_id = yolo_service.train_anomaly_from_project_cloud(project_id, training_config, algorithm)
+
+        # Route to correct training method based on project type
+        if project_type == 'object_detection':
+            task_id = yolo_service.train_detection_from_project_cloud(project_id, training_config, algorithm)
+        elif project_type == 'segmentation':
+            task_id = yolo_service.train_segmentation_from_project_cloud(project_id, training_config, algorithm)
+        elif project_type == 'anomaly_detection':
+            task_id = yolo_service.train_anomaly_from_project_cloud(project_id, training_config, algorithm)
+        else:
+            raise HTTPException(status_code=400, detail=f"Unsupported project type: {project_type}")
         
         # Start monitoring if not already started
         if not vertex_ai_monitor.monitoring:

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import TrainingDataUpload from '../upload/TrainingDataUpload';
 import './Project.css';
 
 function EnhancedProjectCreation({ onProjectCreated, onCancel }) {
-  const [currentStep, setCurrentStep] = useState('project'); // project, algorithm, upload, complete
+  const [currentStep, setCurrentStep] = useState('project'); // project, algorithm, complete
   const [projectData, setProjectData] = useState(null);
   const [formData, setFormData] = useState({
     projectName: '',
@@ -107,7 +106,7 @@ function EnhancedProjectCreation({ onProjectCreated, onCancel }) {
           ...result,
           algorithm: formData.algorithm
         });
-        setCurrentStep('upload');
+        setCurrentStep('complete');
       } else {
         setErrors({ submit: result.message || 'Failed to create project' });
       }
@@ -119,20 +118,6 @@ function EnhancedProjectCreation({ onProjectCreated, onCancel }) {
     }
   };
 
-  const handleUploadComplete = (uploadResult) => {
-    setCurrentStep('complete');
-    if (onProjectCreated) {
-      onProjectCreated({
-        ...projectData,
-        algorithm: formData.algorithm,
-        uploadResult
-      });
-    }
-  };
-
-  const handleUploadError = (error) => {
-    setErrors({ upload: error });
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -154,7 +139,6 @@ function EnhancedProjectCreation({ onProjectCreated, onCancel }) {
     const steps = [
       { id: 'project', label: 'Project Details', icon: '📋' },
       { id: 'algorithm', label: 'Algorithm Selection', icon: '🤖' },
-      { id: 'upload', label: 'Upload Data', icon: '📁' },
       { id: 'complete', label: 'Complete', icon: '✅' }
     ];
 
@@ -358,36 +342,20 @@ function EnhancedProjectCreation({ onProjectCreated, onCancel }) {
             onClick={handleAlgorithmNext}
             disabled={loading || !formData.algorithm}
           >
-            {loading ? '⏳ Creating Project...' : 'Create Project & Upload Data →'}
+            {loading ? '⏳ Creating Project...' : 'Create Project →'}
           </button>
         </div>
       </div>
     );
   };
 
-  const renderUploadStep = () => (
-    <div className="upload-step">
-      <TrainingDataUpload
-        projectId={projectData?.project_id}
-        algorithm={formData.algorithm}
-        projectType={formData.projectType}
-        onUploadComplete={handleUploadComplete}
-        onError={handleUploadError}
-      />
-      {errors.upload && (
-        <div className="error-banner">
-          ❌ {errors.upload}
-        </div>
-      )}
-    </div>
-  );
 
   const renderCompleteStep = () => (
     <div className="complete-step">
       <div className="success-message">
         <div className="success-icon">🎉</div>
         <h2>Project Created Successfully!</h2>
-        <p>Your project <strong>{formData.projectName}</strong> has been created and data uploaded.</p>
+        <p>Your project <strong>{formData.projectName}</strong> has been created. You can now upload data and start training.</p>
       </div>
 
       <div className="project-summary">
@@ -414,22 +382,22 @@ function EnhancedProjectCreation({ onProjectCreated, onCancel }) {
           <div className="next-step">
             <span className="step-number">1</span>
             <div className="step-content">
-              <strong>Train Your Model</strong>
-              <p>Go to My Training to start training your {formData.algorithm} model</p>
+              <strong>Upload Training Data</strong>
+              <p>Add your training images and annotations to the project</p>
             </div>
           </div>
           <div className="next-step">
             <span className="step-number">2</span>
             <div className="step-content">
-              <strong>Monitor Progress</strong>
-              <p>Track training progress and metrics in real-time</p>
+              <strong>Train Your Model</strong>
+              <p>Start training your {formData.algorithm} model with uploaded data</p>
             </div>
           </div>
           <div className="next-step">
             <span className="step-number">3</span>
             <div className="step-content">
-              <strong>Use Your Model</strong>
-              <p>Download and deploy your trained model</p>
+              <strong>Monitor & Deploy</strong>
+              <p>Track progress and deploy your trained model</p>
             </div>
           </div>
         </div>
@@ -439,16 +407,23 @@ function EnhancedProjectCreation({ onProjectCreated, onCancel }) {
         <button
           type="button"
           className="secondary-button"
-          onClick={() => window.location.href = '/projects'}
+          onClick={() => window.location.href = '/my-data'}
         >
           📋 View All Projects
         </button>
         <button
           type="button"
           className="primary-button"
-          onClick={() => window.location.href = '/training'}
+          onClick={() => {
+            if (onProjectCreated) {
+              onProjectCreated({
+                ...projectData,
+                algorithm: formData.algorithm
+              });
+            }
+          }}
         >
-          🚀 Start Training
+          📤 Upload Data Now
         </button>
       </div>
     </div>
@@ -460,8 +435,6 @@ function EnhancedProjectCreation({ onProjectCreated, onCancel }) {
         return renderProjectStep();
       case 'algorithm':
         return renderAlgorithmStep();
-      case 'upload':
-        return renderUploadStep();
       case 'complete':
         return renderCompleteStep();
       default:

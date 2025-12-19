@@ -8,6 +8,7 @@ import argparse
 import json
 import requests
 from pathlib import Path
+from datetime import datetime
 
 # Add current directory to path for imports
 sys.path.append(str(Path(__file__).parent))
@@ -185,7 +186,22 @@ def main():
         
         # Initialize trainer based on model type
         if args.model_type == 'anomaly':
+            from anomaly_trainer import AnomalyTrainer
             trainer = AnomalyTrainer(
+                task_id=args.task_id,
+                project_id=args.project_id,
+                model_dir=args.model_dir,
+                dataset_path=args.dataset_path,
+                config=config
+            )
+        elif args.model_type in ['object_detection', 'segmentation']:
+            from yolo_trainer import YOLOTrainer
+            # Create a new config with model_type set
+            config_dict = config.to_dict()
+            config_dict['model_type'] = args.model_type
+            config = TrainingConfig.from_dict(config_dict)
+            
+            trainer = YOLOTrainer(
                 task_id=args.task_id,
                 project_id=args.project_id,
                 model_dir=args.model_dir,
@@ -202,13 +218,42 @@ def main():
         results = trainer.train()
         
         print(f"✅ Training completed: {results['status']}")
-        
+        print(f"📊 Training results: {results}")
+
         # Upload results to Cloud Storage
         print("📤 Uploading results to Cloud Storage...")
-        uploaded_files = upload_results(args.task_id, args.model_dir, results, args.model_type)
         
+        # Use the actual results directory from the trainer, not the base model_dir
+        if results['status'] == 'completed' and 'results_dir' in results:
+            upload_dir = results['results_dir']
+            print(f"📁 Using trainer results directory: {upload_dir}")
+        else:
+            upload_dir = args.model_dir
+            print(f"📁 Using base model directory: {upload_dir}")
+            
+        print(f"🏷️ Model type: {args.model_type}")
+
+        # Check if upload directory exists and has files before uploading
+        if os.path.exists(upload_dir):
+            file_count = sum(len(files) for _, _, files in os.walk(upload_dir))
+            print(f"📂 Found {file_count} files in upload directory")
+            
+            if file_count > 0:
+                uploaded_files = upload_results(args.task_id, upload_dir, results, args.model_type)
+            else:
+                print("⚠️ No files found to upload")
+                uploaded_files = []
+        else:
+            print(f"❌ Upload directory does not exist: {upload_dir}")
+            uploaded_files = []
+
         print(f"🎉 Training job {args.task_id} completed successfully!")
         print(f"📁 Uploaded {len(uploaded_files)} files to Cloud Storage")
+
+        if len(uploaded_files) == 0:
+            print("⚠️ WARNING: No files were uploaded!")
+        else:
+            print("✅ Files uploaded successfully")
         
         # Notify backend of completion
         notify_training_completion(args.task_id, results, uploaded_files, 'completed')
@@ -216,7 +261,9 @@ def main():
         # Write success marker for Vertex AI
         success_file = os.path.join(args.model_dir, 'SUCCESS')
         with open(success_file, 'w') as f:
-            f.write(f"Training completed successfully at {results['metrics']['completed_at']}")
+            # Use current time if completed_at not in metrics
+            completed_time = results.get('metrics', {}).get('completed_at', datetime.utcnow().isoformat())
+            f.write(f"Training completed successfully at {completed_time}")
         
     except Exception as e:
         error_msg = f"❌ Training failed: {e}"

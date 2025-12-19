@@ -91,45 +91,84 @@ def _get_model_type_folder(model_type: str) -> str:
 def upload_results(task_id: str, model_dir: str, results: Dict[str, Any], model_type: str = 'anomaly') -> List[Dict[str, Any]]:
     """Upload training results to Cloud Storage"""
     logging.info(f"📤 Uploading results for task {task_id}")
-    
+    logging.info(f"📁 Model directory: {model_dir}")
+    logging.info(f"🏷️ Model type: {model_type}")
+
     try:
+        # Check if model directory exists and list contents
+        if not os.path.exists(model_dir):
+            logging.error(f"❌ Model directory does not exist: {model_dir}")
+            return []
+
+        # Log directory structure for debugging
+        logging.info(f"📂 Directory structure of {model_dir}:")
+        for root, dirs, files in os.walk(model_dir):
+            level = root.replace(model_dir, '').count(os.sep)
+            indent = ' ' * 2 * level
+            logging.info(f"{indent}{os.path.basename(root)}/")
+            subindent = ' ' * 2 * (level + 1)
+            for file in files:
+                file_path = os.path.join(root, file)
+                file_size = os.path.getsize(file_path)
+                logging.info(f"{subindent}{file} ({file_size} bytes)")
+
         storage_client = storage.Client()
-        bucket_name = os.getenv('MODELS_BUCKET', 'dangtruong-mltraining-storage')
+        bucket_name = os.getenv('MODELS_BUCKET', 'mltraining-models')
+        logging.info(f"🪣 Using bucket: {bucket_name}")
         bucket = storage_client.bucket(bucket_name)
-        
+
         uploaded_files = []
-        
+        total_files = sum(len(files) for _, _, files in os.walk(model_dir))
+        logging.info(f"📊 Found {total_files} files to upload")
+
+        if total_files == 0:
+            logging.warning(f"⚠️ No files found in model directory: {model_dir}")
+            return []
+
         # Upload all files in model_dir
+        file_count = 0
         for root, dirs, files in os.walk(model_dir):
             for file in files:
+                file_count += 1
                 local_file_path = os.path.join(root, file)
-                
+
                 # Create cloud storage path organized by model type and task_id
                 relative_path = os.path.relpath(local_file_path, model_dir)
                 model_folder = _get_model_type_folder(model_type)
                 cloud_path = f"{model_folder}/{task_id}/{relative_path}"
-                
-                # Upload file
-                blob = bucket.blob(cloud_path)
-                blob.upload_from_filename(local_file_path)
-                
-                # Get file info
-                file_info = {
-                    'filename': file,
-                    'filepath': f"gs://{bucket_name}/{cloud_path}",
-                    'local_path': local_file_path,
-                    'file_size': os.path.getsize(local_file_path),
-                    'created_at': datetime.now().isoformat()
-                }
-                uploaded_files.append(file_info)
-                
-                logging.info(f"📤 Uploaded {file} → {cloud_path}")
-        
-        logging.info(f"✅ Uploaded {len(uploaded_files)} files")
+
+                logging.info(f"📤 Uploading file {file_count}/{total_files}: {file}")
+                logging.info(f"   Local: {local_file_path}")
+                logging.info(f"   Cloud: gs://{bucket_name}/{cloud_path}")
+
+                try:
+                    # Upload file
+                    blob = bucket.blob(cloud_path)
+                    blob.upload_from_filename(local_file_path)
+
+                    # Get file info - Use relative path instead of local container path
+                    file_info = {
+                        'filename': file,
+                        'filepath': f"gs://{bucket_name}/{cloud_path}",
+                        'relative_path': relative_path,  # Store relative path for better portability
+                        'file_size': os.path.getsize(local_file_path),
+                        'created_at': datetime.now().isoformat()
+                    }
+                    uploaded_files.append(file_info)
+
+                    logging.info(f"✅ Successfully uploaded {file}")
+
+                except Exception as upload_error:
+                    logging.error(f"❌ Failed to upload {file}: {upload_error}")
+                    # Continue with other files
+
+        logging.info(f"🎉 Upload complete! Successfully uploaded {len(uploaded_files)}/{total_files} files")
         return uploaded_files
-        
+
     except Exception as e:
         logging.error(f"❌ Failed to upload results: {e}")
+        import traceback
+        logging.error(traceback.format_exc())
         raise
 
 def update_database_progress(task_id: str, status: str = None, progress: float = None, 

@@ -1,0 +1,53 @@
+{
+  "model_info": {
+    "name": "YOLOv8 Defect Detection Model (ONNX)",
+    "version": "1.0",
+    "type": "object_detection",
+    "framework": "YOLOv8",
+    "format": "ONNX",
+    "model_size": "s",
+    "classes": [
+      "dent",
+      "dirt",
+      "scratch"
+    ],
+    "num_classes": 3
+  },
+  "input": {
+    "width": 640,
+    "height": 640,
+    "channels": 3,
+    "format": "RGB",
+    "normalize": true,
+    "mean": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "std": [
+      255.0,
+      255.0,
+      255.0
+    ]
+  },
+  "inference": {
+    "confidence_threshold": 0.25,
+    "iou_threshold": 0.45,
+    "max_detections": 300,
+    "device": "auto"
+  },
+  "performance": {
+    "map50": 0.31120831672916643,
+    "map50_95": 0.13964552291715626
+  },
+  "postprocessing": {
+    "nms_enabled": true,
+    "class_agnostic_nms": false
+  },
+  "conversion_info": {
+    "original_format": "PyTorch",
+    "converted_to": "ONNX",
+    "conversion_date": "2025-10-21",
+    "conversion_tool": "ultralytics"
+  }
+}

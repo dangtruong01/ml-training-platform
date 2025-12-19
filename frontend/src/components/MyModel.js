@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import './MyModel.css';
 
 function MyModel() {
@@ -8,15 +9,30 @@ function MyModel() {
   const [testImages, setTestImages] = useState([]);
   const [inferenceResults, setInferenceResults] = useState(null);
   const [inferenceLoading, setInferenceLoading] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [downloadingModel, setDownloadingModel] = useState(null);
+  const [retryingModel, setRetryingModel] = useState(null);
 
   useEffect(() => {
     loadModels();
-    
+
     // Auto-refresh every 10 seconds to show real-time progress
     const interval = setInterval(loadModels, 10000);
-    
-    // Cleanup interval on unmount
-    return () => clearInterval(interval);
+
+    // Close dropdown when clicking outside
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.download-dropdown')) {
+        setOpenDropdown(null);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    // Cleanup interval and event listener on unmount
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, []);
 
   const getStatusBadge = (status) => {
@@ -136,23 +152,184 @@ function MyModel() {
     }
   };
 
-  const downloadModel = async (modelId) => {
+  const getDownloadOptions = (model) => {
+    const baseOptions = [
+      {
+        id: 'all',
+        label: '📦 Complete Package (PyTorch + ONNX)',
+        description: 'All model files including both formats',
+        icon: '📦'
+      }
+    ];
+
+    // Add ONNX-specific option for compatible model types (only YOLO-based models)
+    const supportedForOnnx = ['object_detection', 'segmentation'];
+    if (supportedForOnnx.includes(model.project_type)) {
+      baseOptions.push({
+        id: 'onnx',
+        label: '🚀 ONNX Models Only',
+        description: 'Optimized for deployment and cross-platform use',
+        icon: '🚀'
+      });
+    }
+
+    return baseOptions;
+  };
+
+  const downloadModel = async (modelId, format = 'all') => {
     try {
-      const response = await fetch(`/api/models/${modelId}/download`);
+      setDownloadingModel(`${modelId}-${format}`);
+      let endpoint;
+      let filename;
+
+      switch (format) {
+        case 'onnx':
+          endpoint = `/api/models/${modelId}/download-onnx`;
+          filename = `model_${modelId}_onnx.zip`;
+          break;
+        case 'pytorch':
+        case 'all':
+        default:
+          endpoint = `/api/models/${modelId}/download`;
+          filename = `model_${modelId}.zip`;
+          break;
+      }
+
+      const response = await fetch(endpoint);
+
+      if (!response.ok) {
+        throw new Error(`Download failed: ${response.status} ${response.statusText}`);
+      }
+
       const blob = await response.blob();
-      
+
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', `model_${modelId}.zip`);
+      link.setAttribute('download', filename);
       document.body.appendChild(link);
       link.click();
       link.remove();
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Download failed:', error);
-      alert('Download failed. Please try again.');
+      alert(`Download failed: ${error.message}`);
+    } finally {
+      setDownloadingModel(null);
     }
+  };
+
+  const DownloadDropdown = ({ model }) => {
+    const options = getDownloadOptions(model);
+    const isOpen = openDropdown === model.model_id;
+    const isDownloading = downloadingModel && downloadingModel.startsWith(model.model_id);
+    const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, flip: false });
+    const dropdownRef = useRef(null);
+
+    const handleDropdownClick = (e) => {
+      e.stopPropagation();
+
+      if (!isOpen) {
+        // Calculate dropdown position relative to viewport
+        const button = e.currentTarget;
+        const rect = button.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const windowWidth = window.innerWidth;
+        const spaceBelow = windowHeight - rect.bottom;
+        const dropdownHeight = 200; // Approximate dropdown height
+        const dropdownWidth = 240; // Dropdown min width
+
+        // Determine if we should flip up
+        const shouldFlip = spaceBelow < dropdownHeight && rect.top > dropdownHeight;
+
+        // Calculate position
+        let top = shouldFlip ? rect.top - dropdownHeight - 4 : rect.bottom + 4;
+        let left = rect.left;
+
+        // Ensure dropdown doesn't go off-screen horizontally
+        if (left + dropdownWidth > windowWidth) {
+          left = windowWidth - dropdownWidth - 10;
+        }
+        if (left < 10) {
+          left = 10;
+        }
+
+        // Ensure dropdown doesn't go off-screen vertically
+        if (top < 10) {
+          top = rect.bottom + 4;
+        }
+        if (top + dropdownHeight > windowHeight - 10) {
+          top = windowHeight - dropdownHeight - 10;
+        }
+
+        setDropdownPosition({ top, left, flip: shouldFlip });
+      }
+
+      setOpenDropdown(isOpen ? null : model.model_id);
+    };
+
+    const handleOptionClick = (e, format) => {
+      e.stopPropagation();
+      downloadModel(model.model_id, format);
+      setOpenDropdown(null);
+    };
+
+    return (
+      <>
+        <div className="download-dropdown">
+          <button
+            className="action-btn primary dropdown-trigger"
+            onClick={handleDropdownClick}
+            disabled={isDownloading}
+          >
+            {isDownloading ? '⏳ Downloading...' : `📥 Download ${isOpen ? '▲' : '▼'}`}
+          </button>
+        </div>
+
+        {isOpen && createPortal(
+          <div
+            className="dropdown-menu-portal"
+            style={{
+              position: 'fixed',
+              top: `${dropdownPosition.top}px`,
+              left: `${dropdownPosition.left}px`,
+              zIndex: 10000,
+              background: 'white',
+              border: '1px solid #e5e7eb',
+              borderRadius: '8px',
+              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.25)',
+              overflow: 'hidden',
+              animation: 'dropdown-appear 0.2s ease',
+              minWidth: '240px',
+            }}
+          >
+            {options.map(option => {
+              const isThisOptionDownloading = downloadingModel === `${model.model_id}-${option.id}`;
+              return (
+                <button
+                  key={option.id}
+                  className="dropdown-option"
+                  data-format={option.id}
+                  onClick={(e) => handleOptionClick(e, option.id)}
+                  disabled={isDownloading}
+                >
+                  <div className="option-header">
+                    <span className="option-icon">
+                      {isThisOptionDownloading ? '⏳' : option.icon}
+                    </span>
+                    <span className="option-label">
+                      {isThisOptionDownloading ? 'Downloading...' : option.label}
+                    </span>
+                  </div>
+                  <div className="option-description">{option.description}</div>
+                </button>
+              );
+            })}
+          </div>,
+          document.body
+        )}
+      </>
+    );
   };
 
   const deleteModel = async (modelId) => {
@@ -179,6 +356,37 @@ function MyModel() {
     }
   };
 
+  const retryTraining = async (modelId) => {
+    if (!window.confirm('Are you sure you want to retry training for this model?')) {
+      return;
+    }
+
+    setRetryingModel(modelId);
+
+    try {
+      const response = await fetch(`/api/models/${modelId}/retry`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+
+      if (data.status === 'success') {
+        alert(`Training restarted successfully! New task ID: ${data.task_id}`);
+        // Refresh models to show the new training job
+        loadModels();
+      } else {
+        alert(`Failed to retry training: ${data.message || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('Retry failed:', error);
+      alert('Retry failed. Please try again.');
+    } finally {
+      setRetryingModel(null);
+    }
+  };
+
   return (
     <div className="my-model-container">
       <div className="my-model-header">
@@ -202,11 +410,12 @@ function MyModel() {
                   <div className="model-header">
                     <div className="model-title">
                       <h3>{model.project_name} ({model.model_id})</h3>
-                      <span className="model-type-badge">
-                        {model.model_type === 'anomaly' ? '🔍 Anomaly Detection' : 
-                         model.model_type === 'detection' ? '📦 Object Detection' : 
+                      <span className={`model-type-badge ${model.project_type || 'other'}`}>
+                        {model.project_type === 'anomaly_detection' ? '🔍 Anomaly Detection' : 
+                         model.project_type === 'object_detection' ? '📦 Object Detection' : 
+                         model.project_type === 'segmentation' ? '🎯 Segmentation' :
                          model.model_type === 'classification' ? '🏷️ Classification' :
-                         '🎯 Segmentation'}
+                         '🤖 Other'}
                       </span>
                     </div>
                     <div className="status-section">
@@ -267,26 +476,18 @@ function MyModel() {
 
                   <div className="model-actions">
                     {model.status === 'completed' && (
-                      <button 
-                        className="action-btn primary"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          downloadModel(model.model_id);
-                        }}
-                      >
-                        📥 Download
-                      </button>
+                      <DownloadDropdown model={model} />
                     )}
                     {model.status === 'failed' && (
-                      <button 
+                      <button
                         className="action-btn secondary"
+                        disabled={retryingModel === model.model_id}
                         onClick={(e) => {
                           e.stopPropagation();
-                          // TODO: Implement retry training
-                          alert('Retry training feature coming soon!');
+                          retryTraining(model.model_id);
                         }}
                       >
-                        🔄 Retry
+                        {retryingModel === model.model_id ? '⏳ Retrying...' : '🔄 Retry'}
                       </button>
                     )}
                     <button 

@@ -43,7 +43,7 @@ class LLMCLIPAnomalyService:
         self._local_llm_pipeline = None
         
         print("🧠 LLM + GroundingDINO + CLIP service initialized")
-    
+
     def _ensure_clip_loaded(self) -> bool:
         """Load CLIP model if not already loaded"""
         if self._clip_model is not None:
@@ -524,7 +524,7 @@ Format your response as JSON:
             
             # Use different model names based on provider
             model_name = self._get_model_name()
-            
+
             response = self._llm_client.chat.completions.create(
                 model=model_name,
                 messages=[{"role": "user", "content": prompt}],
